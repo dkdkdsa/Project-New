@@ -36,6 +36,30 @@ public class ComponentList
 
     }
 
+    public TMain Find<TMain, TSub>()
+    {
+
+        TMain ins = default;
+
+        foreach (var component in _components)
+        {
+
+            if (component is TMain && component is TSub)
+            {
+
+                ins = component.Cast<TMain>();
+
+                return ins;
+
+            }
+
+        }
+
+        return ins;
+
+    }
+
+
     public List<T> FindAll<T>()
     {
 
@@ -48,6 +72,27 @@ public class ComponentList
             {
 
                 list.Add(component.Cast<T>());
+
+            }
+
+        }
+
+        return list;
+
+    }
+
+    public List<TMain> FindAll<TMain, TSub>()
+    {
+
+        List<TMain> list = new List<TMain>();
+
+        foreach (var component in _components)
+        {
+
+            if (component is TMain && component is TSub)
+            {
+
+                list.Add(component.Cast<TMain>());
 
             }
 
