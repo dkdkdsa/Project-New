@@ -1,16 +1,11 @@
+using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 
 [RequireComponent(typeof(LocalInstaller))]
-public abstract class EnemyBase : UnitBase, ILocalInject
+public abstract class EnemyBase : UnitBase
 {
 
-    protected IMoveable _move;
 
-    public virtual void LocalInject(ComponentList list)
-    {
-
-        _move = list.Find<IMoveable>();
-
-    }
 
 }
