@@ -15,12 +15,6 @@ public class PlayerInputController : MonoBehaviour, IInputController, InputMap.I
     private Dictionary<int, object> _valueContainer = new();
     private InputMap _input;
 
-    #region Hash
-    private readonly int HASH_MOUSE_POSITION = "MousePosition".GetHash();
-    private readonly int HASH_L_MOUSE_BUTTON = "LeftButton".GetHash();
-    private readonly int HASH_R_MOUSE_BUTTON = "RightButton".GetHash();
-    #endregion
-
     private void Awake()
     {
         
@@ -78,7 +72,7 @@ public class PlayerInputController : MonoBehaviour, IInputController, InputMap.I
     public void OnMouse(InputAction.CallbackContext context)
     {
 
-        SetValue(HASH_MOUSE_POSITION, context.ReadValue<Vector2>());
+        SetValue(Hashs.INPUT_HASH_MOUSE_POSITION, context.ReadValue<Vector2>());
 
     }
 
@@ -86,9 +80,9 @@ public class PlayerInputController : MonoBehaviour, IInputController, InputMap.I
     {
 
         if(context.performed)
-            NotifyEvent(HASH_L_MOUSE_BUTTON, MouseInputType.Down);
+            NotifyEvent(Hashs.INPUT_HASH_L_MOUSE_BUTTON, MouseInputType.Down);
         else
-            NotifyEvent(HASH_L_MOUSE_BUTTON, MouseInputType.Up);
+            NotifyEvent(Hashs.INPUT_HASH_L_MOUSE_BUTTON, MouseInputType.Up);
 
     }
 
@@ -96,9 +90,9 @@ public class PlayerInputController : MonoBehaviour, IInputController, InputMap.I
     {
 
         if (context.performed)
-            NotifyEvent(HASH_R_MOUSE_BUTTON, MouseInputType.Down);
+            NotifyEvent(Hashs.INPUT_HASH_R_MOUSE_BUTTON, MouseInputType.Down);
         else
-            NotifyEvent(HASH_R_MOUSE_BUTTON, MouseInputType.Up);
+            NotifyEvent(Hashs.INPUT_HASH_R_MOUSE_BUTTON, MouseInputType.Up);
 
     }
 
