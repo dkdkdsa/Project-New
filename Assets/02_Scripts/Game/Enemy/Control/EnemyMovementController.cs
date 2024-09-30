@@ -13,9 +13,9 @@ public class EnemyMovementController : MonoBehaviour, IController, ILocalInject
         _route = list.Find<IRoute>();
     }
 
-    public void GetPath(Vector3[] routes)
+    public void GetPath(Vector3[] routes, bool isRepeat)
     {
-        _route.GetRoute(routes);
+        _route.GetRoute(routes, isRepeat);
     }
 
     private void Update()

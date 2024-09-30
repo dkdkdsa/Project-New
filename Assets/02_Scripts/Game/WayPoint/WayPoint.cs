@@ -4,46 +4,58 @@ using UnityEngine;
 
 public class WayPoint : MonoBehaviour
 {
-    [SerializeField] private Vector3[] _points; //waypoint에 쓸 points;
+    //waypoint에 쓸 points;
+    [SerializeField] private Vector3[] _points;
+
+    //마지막 point와 첫 번째 point를 연결할 것인가 여부
+    public bool IsLinked { get; set; }
+
     private Vector3 _currentPosition;
 
-    public Vector3[] Points => _points; //WayPointEditor에 쓸 points;
+    //WayPointEditor에서 사용하는 points;
+    public Vector3[] Points => _points;
+    //WayPointEditor에tj 사용하는 현재 포지션
     public Vector3 CurrentPosition => _currentPosition;
 
-    void Start()
+    private void Start()
     {
         _currentPosition = transform.position;
     }
 
+    /// <summary>
+    /// index 위치의 Route Point
+    /// </summary>
     public Vector3 GetWayPointPosition(int index)
     {
         return CurrentPosition + _points[index];
     }
 
-    public Vector3[] ModifyWayPointPosition(int index, Vector3 position)
-    {
-        _points[index] = position;
-
-        return _points;
-    }
+#if UNITY_EDITOR
 
     private void OnDrawGizmos()
     {
-        if (transform.hasChanged) //gameStarted가 false고, 포지션 값이 바뀌었으면
-        {
-            _currentPosition = transform.position; //_currentPosition에 현재 포지션 값을 넣는다
-        }
-
         for (int i = 0; i < _points.Length; i++) //기즈모 원
         {
             Gizmos.color = Color.green;
-            Gizmos.DrawWireSphere(_points[i] + _currentPosition, radius: 0.5f); // radius 원 반지름
+            Gizmos.DrawWireSphere(_points[i] + _currentPosition, 0.5f);
 
             if (i < _points.Length - 1) //기즈모 선
             {
-                Gizmos.color = Color.gray;
-                Gizmos.DrawLine(_points[i] + _currentPosition, _points[i + 1] + _currentPosition);
+                DrawLine(i, i + 1);
             }
         }
+
+        if(IsLinked)
+        {
+            DrawLine(_points.Length - 1, 0);
+        }
     }
+
+    private void DrawLine(int fromIdx, int toIdx)
+    {
+        Gizmos.color = Color.gray;
+        Gizmos.DrawLine(_points[fromIdx] + _currentPosition, _points[toIdx] + _currentPosition);
+    }
+
+#endif
 }

@@ -17,13 +17,13 @@ public class WayPointProvider : MonoBehaviour, IWayPoint
         return _wayPoint.GetWayPointPosition(index);
     }
 
-    public Vector3[] ModifyWayPointPosition(int index, Vector3 position)
-    {
-        return _wayPoint.ModifyWayPointPosition(index, position);
-    }
-
     public Vector3[] Route()
     {
         return _wayPoint.Points;
+    }
+
+    public void RepeatMoevement(bool value)
+    {
+        _wayPoint.IsLinked = value;
     }
 }
