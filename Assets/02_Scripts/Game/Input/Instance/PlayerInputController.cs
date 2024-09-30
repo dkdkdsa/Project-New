@@ -13,12 +13,22 @@ public class PlayerInputController : MonoBehaviour, IInputController, InputMap.I
 
     private Dictionary<int, IEventContainer<int>.Event> _eventContainer = new();
     private Dictionary<int, object> _valueContainer = new();
+    private InputMap _input;
 
     #region Hash
     private readonly int HASH_MOUSE_POSITION = "MousePosition".GetHash();
     private readonly int HASH_L_MOUSE_BUTTON = "LeftButton".GetHash();
     private readonly int HASH_R_MOUSE_BUTTON = "RightButton".GetHash();
     #endregion
+
+    private void Awake()
+    {
+        
+        _input = new InputMap();
+        _input.Player.Enable();
+        _input.Player.SetCallbacks(this);
+
+    }
 
     public void NotifyEvent(int key, params object[] value)
     {
