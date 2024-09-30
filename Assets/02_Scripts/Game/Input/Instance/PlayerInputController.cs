@@ -102,4 +102,11 @@ public class PlayerInputController : MonoBehaviour, IInputController, InputMap.I
 
     }
 
+    private void OnDestroy()
+    {
+
+        _input.Dispose();
+
+    }
+
 }
