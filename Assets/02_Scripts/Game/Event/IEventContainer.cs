@@ -25,6 +25,6 @@ public interface IEventContainer<TKey>
     /// 구독한 이밴트를 발행
     /// </summary>
     /// <param name="key">발행할 Event의 키</param>
-    public void NotifyEvent(TKey key);
+    public void NotifyEvent(TKey key, params object[] value);
 
 }
