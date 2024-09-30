@@ -21,7 +21,6 @@ public class TowerCreateController : MonoBehaviour, IController, ILocalInject
     public void LocalInject(ComponentList list)
     {
 
-
         _input = list.Find<IInputController>();
 
     }
@@ -52,7 +51,8 @@ public class TowerCreateController : MonoBehaviour, IController, ILocalInject
         if(t == MouseInputType.Down)
         {
 
-
+            _controlObject = null;
+            //타워 생성
 
         }
 
@@ -84,8 +84,6 @@ public class TowerCreateController : MonoBehaviour, IController, ILocalInject
         var ray = _camera.ScreenPointToRay(_input.GetValue<Vector2>(Hashs.INPUT_HASH_MOUSE_POSITION));
         var rays = Physics.RaycastAll(ray);
 
-
-
         if (rays.Length > 0)
         {
 
@@ -96,8 +94,6 @@ public class TowerCreateController : MonoBehaviour, IController, ILocalInject
             {
 
                 var tag = TagManager.Instance.FindGameTag(item.GatGameObjectId());
-
-                Debug.Log(tag.GetTag());
 
                 if (tag.HasTag(_targetTag))
                 {
