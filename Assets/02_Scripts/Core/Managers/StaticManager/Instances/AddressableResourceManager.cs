@@ -60,6 +60,7 @@ public class AddressableResourceManager : MonoBehaviour, IResourceManager
 
     public void Dispose()
     {
+        _resourceContainer.Clear();
     }
 
 }

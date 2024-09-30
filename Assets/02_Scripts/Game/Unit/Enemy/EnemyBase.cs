@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -6,12 +7,19 @@ using UnityEngine;
 public abstract class EnemyBase : UnitBase, ILocalInject
 {
 
-    protected IController _moveController;
+    protected List<IController> _contaollers;
 
     public void LocalInject(ComponentList list)
     {
-
-        _moveController = list.Find<IController>();
-
+        _contaollers = list.FindAll<IController>();
     }
+
+    protected virtual void Update()
+    {
+        foreach(var controller in _contaollers)
+        {
+            controller.Control();
+        }
+    }
+
 }
