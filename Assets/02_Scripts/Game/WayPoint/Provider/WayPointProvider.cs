@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// WayPoint 반환자 
+/// </summary>
 [RequireComponent(typeof(WayPoint))]
 public class WayPointProvider : MonoBehaviour, IWayPoint
 {
@@ -20,10 +23,5 @@ public class WayPointProvider : MonoBehaviour, IWayPoint
     public Vector3[] Route()
     {
         return _wayPoint.Points;
-    }
-
-    public void RepeatMoevement(bool value)
-    {
-        _wayPoint.IsLinked = value;
     }
 }

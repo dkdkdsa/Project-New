@@ -309,6 +309,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _controller: {fileID: 2780835016381705395, guid: be11fc812692e0347a54cda02ab0024d,
     type: 3}
+  _repeatMovement: 1
 --- !u!114 &1097441211
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -422,7 +423,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1777017103}
-  - component: {fileID: 1777017105}
   - component: {fileID: 1777017104}
   m_Layer: 0
   m_Name: WayPoint
@@ -464,19 +464,6 @@ MonoBehaviour:
   - {x: -6, y: 0, z: -6}
   - {x: 3, y: 0, z: -6}
   - {x: 3, y: 0, z: 7}
-  _repeat: 0
---- !u!114 &1777017105
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1777017102}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d4adfd4eed8582e4ea8e10d6a92ed4fe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1791719266
 GameObject:
   m_ObjectHideFlags: 0
