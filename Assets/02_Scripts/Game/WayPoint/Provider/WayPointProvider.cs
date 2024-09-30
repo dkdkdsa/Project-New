@@ -21,4 +21,9 @@ public class WayPointProvider : MonoBehaviour, IWayPoint
     {
         return _wayPoint.ModifyWayPointPosition(index, position);
     }
+
+    public Vector3[] Route()
+    {
+        return _wayPoint.Points;
+    }
 }
