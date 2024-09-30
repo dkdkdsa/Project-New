@@ -7,14 +7,14 @@ using UnityEngine.ResourceManagement.ResourceLocations;
 public class AddressableResourceManager : MonoBehaviour, IResourceManager
 {
 
-    [SerializeField] private List<AssetLabelReference> _firstLabel;
-
     private Dictionary<int, Object> _resourceContainer = new Dictionary<int, Object>();
 
     public void Init()
     {
 
-        foreach (var label in _firstLabel)
+        var firstLabels = Resources.Load<FirstLoadDataSO>("FirstLoad").labels;
+
+        foreach (var label in firstLabels)
         {
 
             var handle = Addressables.LoadResourceLocationsAsync(label);
@@ -60,6 +60,7 @@ public class AddressableResourceManager : MonoBehaviour, IResourceManager
 
     public void Dispose()
     {
+        _resourceContainer.Clear();
     }
 
 }

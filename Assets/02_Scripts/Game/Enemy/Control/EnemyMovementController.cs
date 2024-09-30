@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class EnemyMovementController : MonoBehaviour, IController, ILocalInject
 {
+    public bool Active { get; set; } = true;
     private IRoute    _route;
     private IMoveable _move;
+
 
     public void LocalInject(ComponentList list)
     {

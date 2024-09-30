@@ -9,6 +9,7 @@ public abstract class UnitBase : MonoBehaviour
     [SerializeField] protected UnitDataSO _data;
     protected GameTag _tag;
 
+
     protected virtual void Awake()
     {
         _tag = GetComponent<GameTag>();
