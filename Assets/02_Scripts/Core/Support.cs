@@ -34,6 +34,11 @@ public static class Support
 
     }
 
+    public static int GatGameObjectId(this RaycastHit hit)
+    {
+        return hit.transform.gameObject.GetInstanceID();
+    }
+
     public static T GetRandom<T>(this List<T> target)
     {
 

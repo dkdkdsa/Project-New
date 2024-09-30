@@ -23,8 +23,8 @@ public static class Managers
 
 #endif
         var resourceManager = root.AddComponent<AddressableResourceManager>();
-        _managerContainer.Add(resourceManager.GetType(), resourceManager);
-        _managerContainer.Add(typeof(SoundManager), new SoundManager());
+        _managerContainer.Add(typeof(IResourceManager), resourceManager);
+        _managerContainer.Add(typeof(ISoundManager), new SoundManager());
 
         foreach (var manager in _managerContainer.Values)
         {

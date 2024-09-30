@@ -18,7 +18,7 @@ MonoBehaviour:
   m_GUID: b32723c66b9ed904bbe237f4ebb88c26
   m_SerializeEntries:
   - m_GUID: 962b11c01a50e0745a29c6e3b7eb8cc8
-    m_Address: Assets/03_Prefab/Test/Test.prefab
+    m_Address: Tower_Test
     m_ReadOnly: 0
     m_SerializedLabels:
     - Tower
