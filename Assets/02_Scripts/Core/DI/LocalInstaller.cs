@@ -1,10 +1,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LocalInstaller : MonoBehaviour
+public class LocalInstaller : InstallerBase
 {
 
-    private void Awake()
+    protected override void Awake()
     {
         
         var compoList = new ComponentList(GetComponentsInChildren<Component>());

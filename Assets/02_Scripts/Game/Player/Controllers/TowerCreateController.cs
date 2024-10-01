@@ -95,6 +95,9 @@ public class TowerCreateController : MonoBehaviour, IController, ILocalInject
 
                 var tag = TagManager.Instance.FindGameTag(item.GatGameObjectId());
 
+                if (tag == null)
+                    continue;
+
                 if (tag.HasTag(_targetTag))
                 {
 
