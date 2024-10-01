@@ -12,9 +12,12 @@ GameObject:
   - component: {fileID: 4191461716626119498}
   - component: {fileID: 8434640876418693691}
   - component: {fileID: 1786037132217592801}
+  - component: {fileID: 3771941402135795733}
   - component: {fileID: 2780835016381705395}
   - component: {fileID: 9171771160320609636}
   - component: {fileID: 4686291059190909905}
+  - component: {fileID: 7283740128991812066}
+  - component: {fileID: 1342305783319442732}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -95,6 +98,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f558386a8616ed74cbe406a624faf21a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &3771941402135795733
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1117131358688558792}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16a95640e80786542bc69c5486c078a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &2780835016381705395
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -131,6 +146,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ff3c35b3de50524eb478393bf870fed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &7283740128991812066
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1117131358688558792}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02031e083b0e813478b8b654ad243ca8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _tags: 0
+--- !u!114 &1342305783319442732
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1117131358688558792}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83a2554cd4b07fb409138b2b1278670d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _data: {fileID: 0}
 --- !u!1 &1623451774634319300
 GameObject:
   m_ObjectHideFlags: 0

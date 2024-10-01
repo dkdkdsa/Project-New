@@ -5,7 +5,7 @@ using UnityEngine.AI;
 /// NavMeshAgent를 사용하는 객체의 경로 찾기
 /// </summary>
 [RequireComponent(typeof(NavMeshAgent))]
-public class NavMeshRouteFinder : MonoBehaviour, IRoute
+public class NavMeshRouteFinder : MonoBehaviour, IRouteable
 {
     private NavMeshAgent _agent;
     private Vector3[] _routes;
