@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Spawner : MonoBehaviour, ILocalInject
 {
+    //이 부분은 나중에 스폰 컨트롤러에서 받아야함
     [SerializeField] private EnemyMovementController _controller;
     [SerializeField] private bool _repeatMovement;
 
@@ -16,22 +17,13 @@ public class Spawner : MonoBehaviour, ILocalInject
 
     private void Start()
     {
-        
+        SpawnUnit();
     }
 
-    private void OnGUI()
+    private void SpawnUnit()
     {
-        _wayPoint.RepeatMoevement(_repeatMovement);
+        EnemyMovementController unit = Instantiate(_controller);
+        unit.transform.position = _wayPoint.GetWayPointPosition(0);
+        unit.GetPath(_wayPoint.Route(), _repeatMovement);
     }
-
-    //private void SpawnUnit(GameObject unit)
-    //{
-    //    unit = Instantiate(_controller);
-    //    unit.transform.position = _wayPoint.GetWayPointPosition(0);
-    //}
-    //
-    //private void SetRoute()
-    //{
-    //    obj.GetPath(_wayPoint.Route());
-    //}
 }
