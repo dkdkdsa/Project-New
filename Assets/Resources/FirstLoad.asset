@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   labels:
   - m_LabelString: Tower
+  - m_LabelString: Prefab

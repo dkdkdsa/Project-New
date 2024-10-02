@@ -12,8 +12,8 @@ public class TowerCreateController : MonoBehaviour, IController, ILocalInject
     /// 움직이는 오브젝트
     /// </summary>
     private GameObject _controlObject;
-    private IResourceManager _resMgr;
     private IInputController _input;
+    private IFactory<ISpawnable> _factory;
     private Camera _camera;
 
     public bool Active { get; set; } = true;
@@ -30,13 +30,7 @@ public class TowerCreateController : MonoBehaviour, IController, ILocalInject
 
         _input.RegisterEvent(Hashs.INPUT_HASH_L_MOUSE_BUTTON, HandleLeftKey);
         _camera = Camera.main;
-
-    }
-
-    private void Start()
-    {
-
-        _resMgr = Managers.GetManager<IResourceManager>();
+        _factory = Factorys.GetFactory<IFactory<ISpawnable>>();
 
     }
 
@@ -67,7 +61,9 @@ public class TowerCreateController : MonoBehaviour, IController, ILocalInject
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
 
-            StartTowerCreate(_resMgr.GetResource<GameObject>("Tower_Test"));
+
+
+            //StartTowerCreate();
 
         }
 
