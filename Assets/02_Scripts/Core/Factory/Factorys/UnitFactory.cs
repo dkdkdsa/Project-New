@@ -3,12 +3,26 @@ using UnityEngine;
 
 public class UnitFactory : MonoBehaviour, IFactory<ISpawnable>
 {
+
+
+    /// <summary>
+    /// 디버깅용 수정 나중에 리소스 매니져로 로딩 할 수 있도록 바꿀것
+    /// </summary>
+    [SerializeField] private List<GameObject> _debugSpawn = new();
+
     private Dictionary<string, GameObject> _prefabContainer = new();
 
     private void Awake()
     {
 
         Factorys.AddFactory(typeof(IFactory<ISpawnable>), this);
+
+        foreach(var item in _debugSpawn)
+        {
+
+            _prefabContainer.Add(item.name, item);
+
+        }
 
     }
 
