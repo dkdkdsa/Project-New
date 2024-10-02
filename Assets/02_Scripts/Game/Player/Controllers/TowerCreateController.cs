@@ -13,7 +13,7 @@ public class TowerCreateController : MonoBehaviour, IController, ILocalInject
     /// </summary>
     private GameObject _controlObject;
     private IInputController _input;
-    private IFactory<ISpawnable> _factory;
+    private IFactory<GameObject> _guideFactory;
     private Camera _camera;
 
     public bool Active { get; set; } = true;
@@ -30,7 +30,7 @@ public class TowerCreateController : MonoBehaviour, IController, ILocalInject
 
         _input.RegisterEvent(Hashs.INPUT_HASH_L_MOUSE_BUTTON, HandleLeftKey);
         _camera = Camera.main;
-        _factory = Factorys.GetFactory<IFactory<ISpawnable>>();
+        _guideFactory = Factorys.GetFactory<IFactory<GameObject>>();
 
     }
 
@@ -61,9 +61,7 @@ public class TowerCreateController : MonoBehaviour, IController, ILocalInject
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
 
-
-
-            //StartTowerCreate();
+            StartTowerCreate(_guideFactory.CreateInstance(new PrefabData { prefabKey = "Test"}));
 
         }
 
