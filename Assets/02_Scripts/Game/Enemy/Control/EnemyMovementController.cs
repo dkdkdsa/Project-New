@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyMovementController : MonoBehaviour, IController, ILocalInject, IRoute
+public class EnemyMovementController : MonoBehaviour, IController, ILocalInject, IRouteHandler
 {
     public bool Active { get; set; } = true;
 
