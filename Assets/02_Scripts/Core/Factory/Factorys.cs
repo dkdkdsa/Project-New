@@ -11,7 +11,7 @@ public static class Factorys
     public static void Bind()
     {
 
-        _factoryBindContainer.Add(typeof(IFactory<GameObject>, new PrefabFactory());
+        _factoryBindContainer.Add(typeof(IFactory<GameObject>), new PrefabFactory());
 
     }
 

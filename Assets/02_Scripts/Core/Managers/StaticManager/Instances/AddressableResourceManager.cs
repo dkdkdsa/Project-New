@@ -1,8 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
-using UnityEngine.ResourceManagement.AsyncOperations;
-using UnityEngine.ResourceManagement.ResourceLocations;
 
 public class AddressableResourceManager : MonoBehaviour, IResourceManager
 {
@@ -19,7 +17,7 @@ public class AddressableResourceManager : MonoBehaviour, IResourceManager
         {
 
             var handle = Addressables.LoadResourceLocationsAsync(label);
-            handle.Completed += (hanedle) => 
+            handle.Completed += (hanedle) =>
             {
 
                 foreach (var data in handle.Result)
@@ -37,10 +35,10 @@ public class AddressableResourceManager : MonoBehaviour, IResourceManager
 
                         }
 
-                        if(!_resourceByLabel.ContainsKey(label.labelString.GetHash()))
+                        if (!_resourceByLabel.ContainsKey(label.labelString.GetHash()))
                             _resourceByLabel.Add(label.labelString.GetHash(), new());
 
-                        _resourceByLabel[label.labelString.GetHash()].Add(new ResourceMap<Object> 
+                        _resourceByLabel[label.labelString.GetHash()].Add(new ResourceMap<Object>
                         { data = res.Result, key = data.PrimaryKey });
 
 
@@ -52,7 +50,7 @@ public class AddressableResourceManager : MonoBehaviour, IResourceManager
 
         }
 
-    }        
+    }
 
     public T GetResource<T>(string key) where T : Object
     {
@@ -79,10 +77,10 @@ public class AddressableResourceManager : MonoBehaviour, IResourceManager
 
         List<ResourceMap<T>> res = new List<ResourceMap<T>>();
 
-        foreach(var item in list)
+        foreach (var item in list)
         {
 
-            res.Add(new ResourceMap<T> { data = item as T, key = item.key });
+            res.Add(new ResourceMap<T> { data = item.data as T, key = item.key });
 
         }
 

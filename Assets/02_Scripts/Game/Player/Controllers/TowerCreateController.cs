@@ -61,7 +61,7 @@ public class TowerCreateController : MonoBehaviour, IController, ILocalInject
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
 
-            StartTowerCreate(_guideFactory.CreateInstance(new PrefabData { prefabKey = "Test"}));
+            StartTowerCreate(_guideFactory.CreateInstance(new PrefabData { prefabKey = "Tower_Test"}));
 
         }
 
