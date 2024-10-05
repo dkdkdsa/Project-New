@@ -46,7 +46,6 @@ public class TowerCreateController : MonoBehaviour, IController, ILocalInject
         {
 
             _controlObject = null;
-            //타워 생성
 
         }
 
@@ -114,10 +113,10 @@ public class TowerCreateController : MonoBehaviour, IController, ILocalInject
 
     }
 
-    public void StartTowerCreate(GameObject prefab)
+    public void StartTowerCreate(GameObject obj)
     {
 
-        _controlObject = Instantiate(prefab);
+        _controlObject = obj;
 
     }
 
