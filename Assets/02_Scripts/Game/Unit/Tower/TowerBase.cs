@@ -1,11 +1,13 @@
 using System.Collections.Generic;
+using UnityEngine;
 
-public class TowerBase : UnitBase, ILocalInject
+public abstract class TowerBase : UnitBase, ILocalInject
 {
 
     protected List<IController> _controllers;
+    public Transform Target { get; set; }
 
-    public void LocalInject(ComponentList list)
+    public virtual void LocalInject(ComponentList list)
     {
 
         _controllers = list.FindAll<IController>();
