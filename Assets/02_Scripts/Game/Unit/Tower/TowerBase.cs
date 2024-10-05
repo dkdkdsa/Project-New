@@ -1,32 +1,36 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class TowerBase : UnitBase, ILocalInject
+public enum TowerEventType
 {
 
-    protected List<IController> _controllers;
-    public Transform Target { get; set; }
+    Attack,
 
-    public virtual void LocalInject(ComponentList list)
+}
+
+public abstract class TowerBase : UnitBase, IEventContainer<TowerEventType>
+{
+
+    public ITimer<float> _coolDownTimer;
+
+    protected override void Awake()
     {
 
-        _controllers = list.FindAll<IController>();
+        base.Awake();
+        _coolDownTimer = TimerHelper.GetTimer<float>();
 
     }
 
-    protected virtual void Update()
+    public void NotifyEvent(TowerEventType key, params object[] value)
     {
+    }
 
-        foreach (var controller in _controllers)
-        {
+    public void RegisterEvent(TowerEventType key, IEventContainer<TowerEventType>.Event evt)
+    {
+    }
 
-            if (!controller.Active)
-                continue;
-
-            controller.Control();
-
-        }
-
+    public void UnregisterEvent(TowerEventType key, IEventContainer<TowerEventType>.Event evt)
+    {
     }
 
 }

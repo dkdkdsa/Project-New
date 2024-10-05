@@ -8,5 +8,6 @@ public interface ITimer<T> : ICloneable
 
     public void SetTime(T value);
     public void StartTimer();
+    public void ResetTimer();
 
 }

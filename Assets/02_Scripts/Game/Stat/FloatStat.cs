@@ -1,16 +1,14 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using UnityEngine;
 
 [Serializable]
-public class Stat : ICloneable
+public class FloatStat : StatBase<float>
 {
 
-    [SerializeField] private float _value;
     private List<float> _modify = new();
 
-    public float Value
+    public override float Value
     {
 
         get
@@ -31,7 +29,7 @@ public class Stat : ICloneable
 
     }
 
-    public Stat(Stat ins)
+    public FloatStat(FloatStat ins)
     {
 
         _value = ins._value;
@@ -39,31 +37,31 @@ public class Stat : ICloneable
 
     }
 
-    public void AddModify(float value)
+    public override void AddModify(float value)
     {
 
         _modify.Add(value);
 
     }
 
-    public void RemoveModify(float value)
+    public override void RemoveModify(float value)
     {
 
         _modify.Remove(value);
 
     }
 
-    public void SetValue(float value)
+    public override void SetValue(float value)
     {
 
         _value = value;
 
     }
 
-    public object Clone()
+    public override object Clone()
     {
 
-        return new Stat(this);
+        return new FloatStat(this);
 
     }
 

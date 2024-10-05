@@ -17,7 +17,6 @@ public class TowerCreateController : MonoBehaviour, IController, ILocalInject
     private Camera _camera;
 
     public bool Active { get; set; } = true;
-
     public void LocalInject(ComponentList list)
     {
 
