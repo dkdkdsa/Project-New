@@ -2,13 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TowerTargetController : TowerControllerBase
+public class TowerTargetController
 {
-    public override void Control()
-    {
 
-
-
-    }
 
 }

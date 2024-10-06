@@ -21,7 +21,7 @@ public class EnemyMovementController : MonoBehaviour, IController, ILocalInject,
         _route.GetRoute(routes, isRepeat);
     }
 
-    public void Control()
+    public void Control(params object[] param)
     {
         if (!Active) return;
 

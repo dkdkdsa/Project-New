@@ -50,7 +50,7 @@ public class TowerCreateController : MonoBehaviour, IController, ILocalInject
 
     }
 
-    public void Control()
+    public void Control(params object[] param)
     {
 
         if (!Active)
