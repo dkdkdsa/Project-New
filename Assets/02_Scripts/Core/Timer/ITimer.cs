@@ -1,5 +1,5 @@
 using System;
-public interface ITimer<T> : ICloneable
+public interface ITimer<T> : ICloneable, IDisposable
 {
 
     public event Action<T> OnTickEvent;

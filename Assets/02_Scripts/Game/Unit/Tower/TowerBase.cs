@@ -8,29 +8,18 @@ public enum TowerEventType
 
 }
 
-public abstract class TowerBase : UnitBase, IEventContainer<TowerEventType>
+public abstract class TowerBase : UnitBase
 {
 
-    public ITimer<float> _coolDownTimer;
+    protected IController _rotateController;
+    protected IController _attackController;
+    protected IController _targetController;
 
-    protected override void Awake()
+    public void Inject(IController rotateController, IController attackController, IController targetController)
     {
-
-        base.Awake();
-        _coolDownTimer = TimerHelper.GetTimer<float>();
-
-    }
-
-    public void NotifyEvent(TowerEventType key, params object[] value)
-    {
-    }
-
-    public void RegisterEvent(TowerEventType key, IEventContainer<TowerEventType>.Event evt)
-    {
-    }
-
-    public void UnregisterEvent(TowerEventType key, IEventContainer<TowerEventType>.Event evt)
-    {
+        _rotateController = rotateController;
+        _attackController = attackController;
+        _targetController = targetController;
     }
 
 }

@@ -1,9 +1,10 @@
 using System;
 using UnityEngine;
 
-public class FloatTimer : ITimer<float>, IDisposable
+public class FloatTimer : ITimer<float>
 {
 
+    private float _origin;
     private float _value;
 
     public float Value => _value;
@@ -35,7 +36,7 @@ public class FloatTimer : ITimer<float>, IDisposable
         {
 
             OnEndEvent?.Invoke(_value);
-            Dispose();
+            CycleManager.Instance.UpdateEvent -= HandleUpdate;
 
         }
 
@@ -44,7 +45,6 @@ public class FloatTimer : ITimer<float>, IDisposable
     public void Dispose()
     {
 
-        CycleManager.Instance.UpdateEvent -= HandleUpdate;
         OnTickEvent = null;
         OnEndEvent = null;
 
@@ -52,6 +52,15 @@ public class FloatTimer : ITimer<float>, IDisposable
 
     public void SetTime(float value)
     {
-        _value = value;
+        _origin = _value = value;
     }
+
+    public void ResetTimer()
+    {
+
+        _value = _origin;
+        StartTimer();
+
+    }
+
 }
