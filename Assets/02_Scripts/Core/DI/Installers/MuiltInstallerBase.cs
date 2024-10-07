@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public abstract class InstallerBase<T> : MonoBehaviour, IInstaller
+public abstract class MuiltInstallerBase<T> : MonoBehaviour, IInstaller
 {
 
     /// <summary>

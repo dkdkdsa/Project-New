@@ -4,7 +4,7 @@ using UnityEngine;
 /// ILocalInject를 상속받은 겍체에게 의존성을 주입
 /// </summary>
 [RequireComponent(typeof(InstallerRunner))]
-public class LocalInstaller : InstallerBase<ILocalInject>
+public class LocalInstaller : MuiltInstallerBase<ILocalInject>
 {
 
     protected override void Inject(ILocalInject[] arr)

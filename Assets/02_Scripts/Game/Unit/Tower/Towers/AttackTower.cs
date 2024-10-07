@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class AttackTower : TowerBase, ILocalInject
@@ -34,4 +32,42 @@ public class AttackTower : TowerBase, ILocalInject
 
     }
 
+    private void Update()
+    {
+
+        _target.Control();
+        CheckAttack();
+
+    }
+
+    /// <summary>
+    /// 공격 가능여부를 검사후 공격
+    /// </summary>
+    private void CheckAttack()
+    {
+
+        if (!_coolDownTimer.IsStarted)
+        {
+            var target = _valueContnainer.GetValue<Transform>(Hashs.TOWER_VALUE_TARGET);
+
+            if (target != null)
+            {
+
+                _coolDownTimer.SetTime(_valueContnainer.GetValue<float>(Hashs.TOWER_VALUE_ATTACKRATE));
+                _coolDownTimer.StartTimer();
+                NotifyEvent(TowerEventType.Rotate);
+                NotifyEvent(TowerEventType.Attack);
+
+            }
+
+        }
+
+    }
+
+    private void OnDestroy()
+    {
+
+        _coolDownTimer.Dispose();
+
+    }
 }

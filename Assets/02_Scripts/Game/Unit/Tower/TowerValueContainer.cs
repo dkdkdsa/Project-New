@@ -35,39 +35,25 @@ public class TowerValueContainer : MonoBehaviour, IValueContainer<int>, IStatCon
     public void AddModify<T>(int key, T mod)
     {
 
-        var t = typeof(T);
-
-        if (t == typeof(float))
-        {
-
+        if (_floatStatContainer.ContainsKey(key))
             _floatStatContainer[key].AddModify(mod.Cast<float>());
-
-        }
 
     }
 
     public void RemoveModify<T>(int key, T value)
     {
 
-        if (typeof(T) == typeof(float))
-        {
-
+        if (_floatStatContainer.ContainsKey(key))
             _floatStatContainer[key].RemoveModify(value.Cast<float>());
-
-        }
 
     }
 
     public T GetValue<T>(int key)
     {
-        var t = typeof(T);
-        if (t == typeof(float))
-        {
 
+        if (_floatStatContainer.ContainsKey(key))
             return _floatStatContainer[key].Value.Cast<T>();
-
-        }
-        else if (t == typeof(Transform))
+        else if (key == Hashs.TOWER_VALUE_TARGET)
             return _target.Cast<T>();
 
         return default;
@@ -77,20 +63,10 @@ public class TowerValueContainer : MonoBehaviour, IValueContainer<int>, IStatCon
     public void SetValue<T>(int key, T value)
     {
 
-        var t = typeof(T);
-
-        if (t == typeof(float))
-        {
-
+        if (_floatStatContainer.ContainsKey(key))
             _floatStatContainer[key].SetValue(value.Cast<float>());
-
-        }
-        else if (t == typeof(Transform))
-        {
-
+        else if (key == Hashs.TOWER_VALUE_TARGET)
             _target = value as Transform;
-
-        }
 
     }
 }

@@ -7,6 +7,9 @@ public static class Hashs
     public static readonly int INPUT_HASH_R_MOUSE_BUTTON = "RightButton".GetHash();
     //---Input---//
 
-    //---T
+    //---Tower---//
+    public static readonly int TOWER_VALUE_TARGET = "Target".GetHash();
+    public static readonly int TOWER_VALUE_ATTACKRATE = "AttackRate".GetHash();
+    //---Tower---//
 
 }
