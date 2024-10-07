@@ -26,7 +26,7 @@ public class TowerValueContainer : MonoBehaviour, IValueContainer<int>, IStatCon
         foreach (var pair in _floatStats)
         {
 
-            _floatStatContainer.Add(pair.name.GetHash(), pair.stat);
+            _floatStatContainer.Add(pair.name.GetHash(), new FloatStat(pair.stat));
 
         }
 

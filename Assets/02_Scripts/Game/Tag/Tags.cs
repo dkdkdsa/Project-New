@@ -9,5 +9,6 @@ public enum Tags
     Damageable = 1 << 2,
     Ground = 1 << 3,
     Dieable = 1 << 4,
-    KnockBackable = 1 << 5,
+    Enemy = 1 << 5,
+
 }
