@@ -122,6 +122,24 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &153101876 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6380015616824489989, guid: 962b11c01a50e0745a29c6e3b7eb8cc8,
+    type: 3}
+  m_PrefabInstance: {fileID: 877945586}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &153101891
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 153101876}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 293a193eca24b57439eb1648ff72acbc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &265505798
 GameObject:
   m_ObjectHideFlags: 0
@@ -241,7 +259,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02031e083b0e813478b8b654ad243ca8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _tags: 8
+  _tags: 4
 --- !u!1 &342462840
 GameObject:
   m_ObjectHideFlags: 0
@@ -392,6 +410,7 @@ GameObject:
   - component: {fileID: 424634323}
   - component: {fileID: 424634322}
   - component: {fileID: 424634321}
+  - component: {fileID: 424634326}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -411,7 +430,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02031e083b0e813478b8b654ad243ca8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _tags: 32
+  _tags: 8
 --- !u!65 &424634322
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -498,6 +517,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &424634326
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 424634320}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9a34830dd37a49459c099744e3857d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <Hp>k__BackingField: 300
 --- !u!1 &677601456
 GameObject:
   m_ObjectHideFlags: 0
@@ -679,10 +711,15 @@ PrefabInstance:
       propertyPath: m_Name
       value: Test
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2105397932994564472, guid: 962b11c01a50e0745a29c6e3b7eb8cc8, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6380015616824489989, guid: 962b11c01a50e0745a29c6e3b7eb8cc8,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 153101891}
   m_SourcePrefab: {fileID: 100100000, guid: 962b11c01a50e0745a29c6e3b7eb8cc8, type: 3}
 --- !u!1 &1518588122
 GameObject:

@@ -1,6 +1,8 @@
 public interface IHpable
 {
 
-    public float Hp { get; set; }
+    public delegate void HpChanged(float oldValue, float newValue);
+    public event HpChanged OnHpChanged;
+    public float Hp { get; }
 
 }

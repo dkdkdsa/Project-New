@@ -5,7 +5,7 @@ public class TowerAttackController : MonoBehaviour, IController, ILocalInject
 
     private IEventContainer<TowerEventType> _event;
     private IValueContainer<int> _value;
-    private IAttackable _attack;
+    private IAttackable<IDamageable> _attack;
 
     public bool Active { get; set; }
 
@@ -13,7 +13,7 @@ public class TowerAttackController : MonoBehaviour, IController, ILocalInject
     {
         _event = list.Find<IEventContainer<TowerEventType>>();
         _value = list.Find<IValueContainer<int>>();
-        _attack = list.Find<IAttackable>();
+        _attack = list.Find<IAttackable<IDamageable>>();
     }
 
     private void Awake()
@@ -26,7 +26,8 @@ public class TowerAttackController : MonoBehaviour, IController, ILocalInject
     public void Control(params object[] param)
     {
 
-        _attack.Attack(_value.GetValue<float>(Hashs.TOWER_VALUE_ATTACKPOWER));
+        var target = _value.GetValue<Transform>(Hashs.TOWER_VALUE_TARGET);
+        _attack.Attack(_value.GetValue<float>(Hashs.TOWER_VALUE_ATTACKPOWER), target.transform.GetComponent<IDamageable>());
 
     }
 
