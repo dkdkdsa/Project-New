@@ -26,4 +26,12 @@ public static class TimerHelper
 
     }
 
+    public static ITimer<T> GetTimer<T>()
+    {
+
+        var ins = _bindContainer[typeof(T)].Clone<ITimer<T>>();
+        return ins;
+
+    }
+
 }

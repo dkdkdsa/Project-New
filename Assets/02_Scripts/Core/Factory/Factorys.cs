@@ -7,6 +7,14 @@ public static class Factorys
 
     private static Dictionary<Type, IFactoryable> _factoryBindContainer = new Dictionary<Type, IFactoryable>();
 
+    [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
+    public static void Bind()
+    {
+
+        _factoryBindContainer.Add(typeof(IFactory<GameObject>), new PrefabFactory());
+
+    }
+
     public static void AddFactory(Type type, IFactoryable factory)
     {
         _factoryBindContainer.Add(type, factory);

@@ -15,7 +15,7 @@ MonoBehaviour:
   m_DefaultGroup: b32723c66b9ed904bbe237f4ebb88c26
   m_currentHash:
     serializedVersion: 2
-    Hash: b70da922671979dde2ebb8a6ce40afbf
+    Hash: 2bbd985fd96a5dd8580fc172e038c536
   m_OptimizeCatalogSize: 0
   m_BuildRemoteCatalog: 0
   m_BundleLocalCatalog: 0
@@ -88,6 +88,7 @@ MonoBehaviour:
     m_LabelNames:
     - default
     - Tower
+    - Prefab
   m_SchemaTemplates: []
   m_GroupTemplateObjects:
   - {fileID: 11400000, guid: 64c7a3b567aebfa41a60916cbffa724f, type: 2}

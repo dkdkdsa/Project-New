@@ -12,12 +12,11 @@ public class TowerCreateController : MonoBehaviour, IController, ILocalInject
     /// 움직이는 오브젝트
     /// </summary>
     private GameObject _controlObject;
-    private IResourceManager _resMgr;
     private IInputController _input;
+    private IFactory<GameObject> _guideFactory;
     private Camera _camera;
 
     public bool Active { get; set; } = true;
-
     public void LocalInject(ComponentList list)
     {
 
@@ -30,13 +29,7 @@ public class TowerCreateController : MonoBehaviour, IController, ILocalInject
 
         _input.RegisterEvent(Hashs.INPUT_HASH_L_MOUSE_BUTTON, HandleLeftKey);
         _camera = Camera.main;
-
-    }
-
-    private void Start()
-    {
-
-        _resMgr = Managers.GetManager<IResourceManager>();
+        _guideFactory = Factorys.GetFactory<IFactory<GameObject>>();
 
     }
 
@@ -52,13 +45,12 @@ public class TowerCreateController : MonoBehaviour, IController, ILocalInject
         {
 
             _controlObject = null;
-            //타워 생성
 
         }
 
     }
 
-    public void Control()
+    public void Control(params object[] param)
     {
 
         if (!Active)
@@ -67,7 +59,7 @@ public class TowerCreateController : MonoBehaviour, IController, ILocalInject
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
 
-            StartTowerCreate(_resMgr.GetResource<GameObject>("Tower_Test"));
+            StartTowerCreate(_guideFactory.CreateInstance(new PrefabData { prefabKey = "Tower_Test"}));
 
         }
 
@@ -120,10 +112,10 @@ public class TowerCreateController : MonoBehaviour, IController, ILocalInject
 
     }
 
-    public void StartTowerCreate(GameObject prefab)
+    public void StartTowerCreate(GameObject obj)
     {
 
-        _controlObject = Instantiate(prefab);
+        _controlObject = obj;
 
     }
 

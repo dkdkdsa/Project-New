@@ -9,6 +9,6 @@ public interface IController
     /// <summary>
     /// Update와 동일
     /// </summary>
-    public void Control();
+    public void Control(params object[] param);
 
 }
