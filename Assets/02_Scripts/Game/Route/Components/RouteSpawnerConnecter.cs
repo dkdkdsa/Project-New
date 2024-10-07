@@ -17,7 +17,7 @@ public class RouteSpawnerConnecter : MonoBehaviour, ILocalInject
         _wayPoint     = list.Find<IWayPoint>();
     }
 
-    private void Start()
+    private void Awake()
     {
         _routeSpawner.GetRoute(_wayPoint.Route(), _isRepeat);
     }
