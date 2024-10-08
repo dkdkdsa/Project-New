@@ -14,7 +14,7 @@ public class StatPair<T, TValue> where T : StatBase<TValue>
 public class TowerValueContainer : MonoBehaviour, IValueContainer<int>, IStatContainer<int>
 {
 
-    [field: SerializeField] public List<StatPair<FloatStat, float>> FloatStats { get; private set; }
+    [field: SerializeField] public List<StatPair<FloatStat, float>> FloatStats { get; private set; } = new();
 
     private Dictionary<int, FloatStat> _floatStatContainer;
     private Transform _target;

@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 9083028183175100241}
   - component: {fileID: 8446251626733039311}
   - component: {fileID: 2545856931713642912}
+  - component: {fileID: 6686576596218618876}
   m_Layer: 0
   m_Name: Test
   m_TagString: Untagged
@@ -152,7 +153,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d2797e283b956140aabc9a3000ca996, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _data: {fileID: 11400000, guid: 33d8eb755dfd62c4c9afa5676ca9d177, type: 2}
+  <Data>k__BackingField: {fileID: 11400000, guid: 33d8eb755dfd62c4c9afa5676ca9d177,
+    type: 2}
 --- !u!114 &3740232653352972170
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -216,16 +218,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d31140cc57eca246917370312c0d760, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _floatStats:
+  <FloatStats>k__BackingField:
   - name: AttackRate
     stat:
       _value: 1
   - name: AttackPower
     stat:
-      _value: 3
+      _value: 1
   - name: Range
     stat:
-      _value: 7
+      _value: 3
 --- !u!114 &8446251626733039311
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -250,3 +252,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f558386a8616ed74cbe406a624faf21a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &6686576596218618876
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6380015616824489989}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e92c4a6f0c44f3449e903830414b13d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <Datas>k__BackingField: []

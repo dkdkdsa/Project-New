@@ -795,75 +795,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Test
       objectReference: {fileID: 0}
-    - target: {fileID: 7431485165246448449, guid: 962b11c01a50e0745a29c6e3b7eb8cc8,
-        type: 3}
-      propertyPath: <Data>k__BackingField
-      value: 
-      objectReference: {fileID: 11400000, guid: 33d8eb755dfd62c4c9afa5676ca9d177,
-        type: 2}
-    - target: {fileID: 9083028183175100241, guid: 962b11c01a50e0745a29c6e3b7eb8cc8,
-        type: 3}
-      propertyPath: <FloatStats>k__BackingField.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 9083028183175100241, guid: 962b11c01a50e0745a29c6e3b7eb8cc8,
-        type: 3}
-      propertyPath: <FloatStats>k__BackingField.Array.data[0].name
-      value: AttackRate
-      objectReference: {fileID: 0}
-    - target: {fileID: 9083028183175100241, guid: 962b11c01a50e0745a29c6e3b7eb8cc8,
-        type: 3}
-      propertyPath: <FloatStats>k__BackingField.Array.data[1].name
-      value: AttackPower
-      objectReference: {fileID: 0}
-    - target: {fileID: 9083028183175100241, guid: 962b11c01a50e0745a29c6e3b7eb8cc8,
-        type: 3}
-      propertyPath: <FloatStats>k__BackingField.Array.data[2].name
-      value: Range
-      objectReference: {fileID: 0}
-    - target: {fileID: 9083028183175100241, guid: 962b11c01a50e0745a29c6e3b7eb8cc8,
-        type: 3}
-      propertyPath: <FloatStats>k__BackingField.Array.data[0].stat._value
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 9083028183175100241, guid: 962b11c01a50e0745a29c6e3b7eb8cc8,
-        type: 3}
-      propertyPath: <FloatStats>k__BackingField.Array.data[1].stat._value
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 9083028183175100241, guid: 962b11c01a50e0745a29c6e3b7eb8cc8,
-        type: 3}
-      propertyPath: <FloatStats>k__BackingField.Array.data[2].stat._value
-      value: 3
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 6380015616824489989, guid: 962b11c01a50e0745a29c6e3b7eb8cc8,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1441780823}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 962b11c01a50e0745a29c6e3b7eb8cc8, type: 3}
---- !u!1 &1441780808 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6380015616824489989, guid: 962b11c01a50e0745a29c6e3b7eb8cc8,
-    type: 3}
-  m_PrefabInstance: {fileID: 877945586}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1441780823
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1441780808}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8e92c4a6f0c44f3449e903830414b13d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _datas: []
 --- !u!1 &1518588122
 GameObject:
   m_ObjectHideFlags: 0
@@ -1013,12 +949,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e92c4a6f0c44f3449e903830414b13d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _datas:
-  - level: 0
-    cost: 0
-    datas:
-    - statKey: 0
-      modify: 0
+  <Datas>k__BackingField: []
 --- !u!4 &2086999627
 Transform:
   m_ObjectHideFlags: 0
