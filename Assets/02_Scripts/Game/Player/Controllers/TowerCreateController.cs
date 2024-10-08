@@ -13,14 +13,16 @@ public class TowerCreateController : MonoBehaviour, IController, ILocalInject
     /// </summary>
     private GameObject _controlObject;
     private IInputController _input;
-    private IFactory<GameObject> _guideFactory;
+    private IFactory<GameObject> _factory;
     private Camera _camera;
+    private string _address;
 
     public bool Active { get; set; } = true;
     public void LocalInject(ComponentList list)
     {
 
         _input = list.Find<IInputController>();
+        _factory = Factorys.GetFactory<IFactory<GameObject>>();
 
     }
 
@@ -29,14 +31,13 @@ public class TowerCreateController : MonoBehaviour, IController, ILocalInject
 
         _input.RegisterEvent(Hashs.INPUT_HASH_L_MOUSE_BUTTON, HandleLeftKey);
         _camera = Camera.main;
-        _guideFactory = Factorys.GetFactory<IFactory<GameObject>>();
 
     }
 
     private void HandleLeftKey(object[] param)
     {
 
-        if (!Active)
+        if (!Active || _controlObject == null)
             return;
 
         var t = param[0].Cast<MouseInputType>();
@@ -44,8 +45,10 @@ public class TowerCreateController : MonoBehaviour, IController, ILocalInject
         if(t == MouseInputType.Down)
         {
 
-            _controlObject = null;
+            var ins = _factory.CreateInstance(new PrefabData { prefabKey = _address });
+            ins.transform.position = _controlObject.transform.position;
 
+            Destroy(_controlObject);
         }
 
     }
@@ -55,13 +58,6 @@ public class TowerCreateController : MonoBehaviour, IController, ILocalInject
 
         if (!Active)
             return;
-
-        if (Input.GetKeyDown(KeyCode.Alpha1))
-        {
-
-            StartTowerCreate(_guideFactory.CreateInstance(new PrefabData { prefabKey = "Tower_Test"}));
-
-        }
 
         FollowObject();
 
@@ -112,10 +108,11 @@ public class TowerCreateController : MonoBehaviour, IController, ILocalInject
 
     }
 
-    public void StartTowerCreate(GameObject obj)
+    public void StartTowerCreate(GameObject obj, string address)
     {
 
         _controlObject = obj;
+        _address = address;
 
     }
 

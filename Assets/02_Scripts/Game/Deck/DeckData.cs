@@ -4,6 +4,6 @@ using System.Collections.Generic;
 public class DeckData
 {
 
-    public List<string> unitDataAddress;
+    public List<string> unitDataAddress = new();
 
 }

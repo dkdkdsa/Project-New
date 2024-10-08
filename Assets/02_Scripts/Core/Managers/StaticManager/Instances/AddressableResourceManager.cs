@@ -2,11 +2,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 
-public class AddressableResourceManager : MonoBehaviour, IResourceManager
+public class AddressableResourceManager : IResourceManager
 {
 
     private Dictionary<int, Object> _resourceContainer = new Dictionary<int, Object>();
     private Dictionary<int, List<ResourceMap<Object>>> _resourceByLabel = new Dictionary<int, List<ResourceMap<Object>>>();
+
 
     public void Init()
     {
@@ -54,7 +55,9 @@ public class AddressableResourceManager : MonoBehaviour, IResourceManager
 
     public T GetResource<T>(string key) where T : Object
     {
+
         return _resourceContainer[key.GetHash()] as T;
+
     }
 
     public T GetResource<T>(int key) where T : Object

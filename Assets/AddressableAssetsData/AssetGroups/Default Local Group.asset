@@ -25,10 +25,16 @@ MonoBehaviour:
     - Prefab
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 33d8eb755dfd62c4c9afa5676ca9d177
-    m_Address: Assets/04_SO/Unit/Towers/Test_1Data.asset
+    m_Address: Tower_Test_Data
     m_ReadOnly: 0
     m_SerializedLabels:
     - UnitData
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 8d96968a4d0921d49b607161ba066821
+    m_Address: Tower_Test_Preview
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Prefab
     FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 7c1b6ab13f2e3f04789f0d493da40577, type: 2}
