@@ -12,6 +12,7 @@ public class TowerCreateController : MonoBehaviour, IController, ILocalInject
     /// 움직이는 오브젝트
     /// </summary>
     private GameObject _controlObject;
+
     private IInputController _input;
     private IFactory<GameObject> _factory;
     private Camera _camera;
