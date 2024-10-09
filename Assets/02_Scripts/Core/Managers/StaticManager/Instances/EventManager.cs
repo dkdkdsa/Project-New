@@ -1,6 +1,4 @@
-using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 
 
 public class EventManager : IEventManager
@@ -14,14 +12,30 @@ public class EventManager : IEventManager
 
     public void NotifyEvent(GlobalEvent key, params object[] value)
     {
+        if (_eventContainer.ContainsKey(key))
+        {
+            _eventContainer[key]?.Invoke(value);
+        }
     }
 
     public void RegisterEvent(GlobalEvent key, IEventContainer<GlobalEvent>.Event evt)
     {
+
+        if (!_eventContainer.ContainsKey(key))
+            _eventContainer.Add(key, null);
+
+        _eventContainer[key] += evt;
+
     }
 
     public void UnregisterEvent(GlobalEvent key, IEventContainer<GlobalEvent>.Event evt)
     {
+
+        if (!_eventContainer.ContainsKey(key))
+            return;
+
+        _eventContainer[key] -= evt;
+
     }
 
     public void Dispose()

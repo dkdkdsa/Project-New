@@ -24,6 +24,7 @@ public static class Managers
 #endif
         _managerContainer.Add(typeof(IResourceManager), new AddressableResourceManager());
         _managerContainer.Add(typeof(ISoundManager), new SoundManager());
+        _managerContainer.Add(typeof(IEventManager), new EventManager());
 
         foreach (var manager in _managerContainer.Values)
         {
