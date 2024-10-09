@@ -82,7 +82,7 @@ public class TowerCreateController : MonoBehaviour, IController, ILocalInject
             foreach(var item in rays)
             {
 
-                var tag = TagManager.Instance.FindGameTag(item.GatGameObjectId());
+                var tag = TagManager.Instance.FindGameTag(item.GetGameObjectId());
 
                 if (tag == null)
                     continue;

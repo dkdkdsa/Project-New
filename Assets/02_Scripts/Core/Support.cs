@@ -34,7 +34,7 @@ public static class Support
 
     }
 
-    public static int GatGameObjectId(this RaycastHit hit)
+    public static int GetGameObjectId(this RaycastHit hit)
     {
         return hit.transform.gameObject.GetInstanceID();
     }
