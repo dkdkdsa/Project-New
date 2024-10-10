@@ -4,34 +4,28 @@ using UnityEngine;
 
 public class WaveSetting : MonoBehaviour, IWaveSettingHandler
 {
-    [SerializeField] private float _waveStartTime;
-    [SerializeField] private float _defaultSpawnInterval;
-    [SerializeField] private List<WaveData> _waveData;
+    public float WaveStartTime;
+    public float DefaultSpawnInterval;
+    public List<WaveData> WaveData = new();
 
-    public float DefaultSpawnTime => _defaultSpawnInterval;
+    public float DefaultSpawnTime => DefaultSpawnInterval;
 
-    public float WaveIntervalTime => _waveStartTime;
+    public float WaveIntervalTime => WaveStartTime;
 
-    public int Wave => _waveData.Count;
+    public int Wave => WaveData.Count;
 
     public SpawnData GetSpawnData(int wave, int index)
     {
-        return _waveData[wave].SpawnDatas[index];
+        return WaveData[wave].SpawnDatas[index];
     }
 
     public WaveData GetWaveData(int wave)
     {
-        return _waveData[wave];
+        return WaveData[wave];
     }
 
     public int SpawnUnitCountInWave(int wave)
     {
-        return _waveData[wave].SpawnDatas.Count;
+        return WaveData[wave].SpawnDatas.Count;
     }
-
-#if UNITY_EDITOR
-
-    public List<WaveData> WaveData => _waveData;
-
-#endif
 }

@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 [Serializable]
 public class WaveData
@@ -15,5 +16,6 @@ public class SpawnData
     public bool IsUnitSpawn = true;
 
     public Enemy Prefab;
+
     public float SpawnInterval;
 }

@@ -1,6 +1,7 @@
-using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEditor;
+using UnityEditorInternal;
 using UnityEngine;
 
 [CustomEditor(typeof(WaveSetting))]
@@ -10,22 +11,70 @@ public class WaveSettingEditor : Editor
     private WaveSetting _target => target as WaveSetting;
     private int _index = 0;
 
+    private ReorderableList _list;
+
     private void WaveUpdate()
     {
         _waveNameData.Clear(); // 중복 추가 방지
+
         for (int i = 0; i < _target.WaveData.Count; i++)
         {
             _waveNameData.Add($"{i + 1} 웨이브");
         }
     }
 
-    public override void OnInspectorGUI()
+    private void InitializeReorderableList()
     {
-        SelectStartState();
+        if (_index >= 0 && _index < _target.WaveData.Count)
+        {
+            // ReorderableList 초기화
+            _list = new ReorderableList(serializedObject, serializedObject.FindProperty("WaveData").GetArrayElementAtIndex(_index).FindPropertyRelative("SpawnDatas"), true, true, true, true);
+
+            _list.drawElementCallback = (Rect rect, int index, bool isActive, bool isFocused) =>
+            {
+                var element = _list.serializedProperty.GetArrayElementAtIndex(index);
+                bool isUnitSpawn = element.FindPropertyRelative("IsUnitSpawn").boolValue;
+                rect.y += 2;
+
+                EditorGUI.PropertyField(new Rect(rect.x + 5, rect.y, 60, EditorGUIUtility.singleLineHeight),
+                    element.FindPropertyRelative("IsUnitSpawn"), GUIContent.none);
+
+                if (isUnitSpawn)
+                {
+                    EditorGUI.PropertyField(new Rect(rect.x + 30, rect.y, rect.width - 35, EditorGUIUtility.singleLineHeight),
+                    element.FindPropertyRelative("Prefab"), GUIContent.none);
+                }
+                else
+                {
+                    EditorGUI.PropertyField(new Rect(rect.x + 30, rect.y, rect.width - 35, EditorGUIUtility.singleLineHeight),
+                        element.FindPropertyRelative("SpawnInterval"), GUIContent.none);
+                }
+            };
+        }
     }
 
-    private void SelectStartState()
+    public override void OnInspectorGUI()
     {
+        WaveUpdate();
+
+        EditorGUILayout.Space();
+        GUIStyle boldStyle = new GUIStyle(EditorStyles.label)
+        {
+            fontStyle = FontStyle.Bold // 진한 스타일 설정
+        };
+
+        // 진한 텍스트 출력
+        EditorGUILayout.LabelField("[ Default Settings ]", boldStyle);
+
+        EditorGUILayout.Space();
+
+        _target.WaveStartTime = EditorGUILayout.FloatField("웨이브 간의 시간 간격:", _target.WaveStartTime);
+        _target.DefaultSpawnInterval = EditorGUILayout.FloatField("유닛의 기본 생성 시간:", _target.DefaultSpawnInterval);
+
+        EditorGUILayout.Space();
+        EditorGUILayout.Space();
+        EditorGUILayout.Space();
+
         EditorGUILayout.BeginHorizontal();
 
         EditorGUILayout.LabelField("웨이브 지정");
@@ -36,7 +85,15 @@ public class WaveSettingEditor : Editor
             data.SpawnDatas.Add(new SpawnData());  // 기본 SpawnData 추가
             _target.WaveData.Add(data);
 
+            // ApplyModifiedProperties로 serializedObject를 업데이트
+            serializedObject.Update();
             EditorUtility.SetDirty(_target);  // 객체가 변경되었음을 알림
+            WaveUpdate(); // Update the wave name list
+
+            _index = _target.WaveData.Count - 1; // Select the newly added wave
+
+            // 새 데이터를 추가한 후 다시 ReorderableList 초기화
+            InitializeReorderableList();
         }
 
         if (GUILayout.Button("Remove"))
@@ -44,7 +101,6 @@ public class WaveSettingEditor : Editor
             if (_target.WaveData.Count > 0 && _index >= 0 && _index < _target.WaveData.Count)
             {
                 _target.WaveData.RemoveAt(_index);  // 해당 인덱스의 WaveData 제거
-                _waveNameData.RemoveAt(_index);     // 해당 인덱스의 웨이브 이름 제거
 
                 // 인덱스가 마지막을 가리키고 있었다면 하나 줄여줌
                 if (_index >= _waveNameData.Count)
@@ -53,39 +109,36 @@ public class WaveSettingEditor : Editor
                 }
 
                 EditorUtility.SetDirty(_target);  // 객체가 변경되었음을 알림
+                WaveUpdate();  // Update wave names
+
+                // 데이터가 남아 있을 경우에만 ReorderableList 초기화
+                if (_waveNameData.Count > 0)
+                {
+                    InitializeReorderableList();
+                }
                 Repaint();  // 인스펙터 다시 그리기
             }
         }
-
-        WaveUpdate();  // 항상 최신 상태 유지
 
         _index = EditorGUILayout.Popup(_index, _waveNameData.ToArray());
 
         EditorGUILayout.EndHorizontal();
 
         EditorGUILayout.Space();
+        EditorGUILayout.Space();
 
-        // _index에 해당하는 WaveData의 SpawnData 출력
-        if (_target.WaveData.Count > 0 && _index >= 0 && _index < _target.WaveData.Count)
+        serializedObject.Update();
+
+        if (_index >= 0 && _index < _target.WaveData.Count)
         {
-            EditorGUILayout.LabelField($"{_index + 1} 웨이브의 SpawnData");
-
-            var waveData = _target.WaveData[_index];
-            if (waveData.SpawnDatas != null && waveData.SpawnDatas.Count > 0)
+            if (_list == null || _list.count != _target.WaveData[_index].SpawnDatas.Count)
             {
-                foreach (var spawnData in waveData.SpawnDatas)
-                {
-                    spawnData.IsUnitSpawn = EditorGUILayout.Toggle("유닛 생성 여부", spawnData.IsUnitSpawn);
-                    spawnData.Prefab = (Enemy)EditorGUILayout.ObjectField("유닛", spawnData.Prefab, typeof(Enemy), true);
-                    spawnData.SpawnInterval = EditorGUILayout.FloatField("다음 이벤트간의 간격", spawnData.SpawnInterval);
-                }
-            }
-            else
-            {
-                EditorGUILayout.LabelField("SpawnData가 없습니다.");
+                InitializeReorderableList();
             }
 
-            EditorUtility.SetDirty(_target);  // 변경 사항 반영
+            _list.DoLayoutList(); // ReorderableList 표시
         }
+
+        serializedObject.ApplyModifiedProperties();
     }
 }

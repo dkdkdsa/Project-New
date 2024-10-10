@@ -233,6 +233,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05a6f8533b12962488d38101396c88ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _canChangeWave: 0
 --- !u!114 &371682181
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -285,9 +286,44 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 918a6a469a67afe4b896dcd66253ceda, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _waveStartTime: 0
-  _defaultSpawnInterval: 0
-  _waveData: []
+  WaveStartTime: 3
+  DefaultSpawnInterval: 0.5
+  WaveData:
+  - SpawnDatas:
+    - IsUnitSpawn: 1
+      Prefab: {fileID: 1342305783319442732, guid: be11fc812692e0347a54cda02ab0024d,
+        type: 3}
+      SpawnInterval: 0
+    - IsUnitSpawn: 1
+      Prefab: {fileID: 1342305783319442732, guid: be11fc812692e0347a54cda02ab0024d,
+        type: 3}
+      SpawnInterval: 0
+    - IsUnitSpawn: 0
+      Prefab: {fileID: 1342305783319442732, guid: be11fc812692e0347a54cda02ab0024d,
+        type: 3}
+      SpawnInterval: 3
+    - IsUnitSpawn: 1
+      Prefab: {fileID: 1342305783319442732, guid: be11fc812692e0347a54cda02ab0024d,
+        type: 3}
+      SpawnInterval: 0
+  - SpawnDatas:
+    - IsUnitSpawn: 1
+      Prefab: {fileID: 1342305783319442732, guid: be11fc812692e0347a54cda02ab0024d,
+        type: 3}
+      SpawnInterval: 0
+    - IsUnitSpawn: 0
+      Prefab: {fileID: 1342305783319442732, guid: be11fc812692e0347a54cda02ab0024d,
+        type: 3}
+      SpawnInterval: 5
+    - IsUnitSpawn: 1
+      Prefab: {fileID: 1342305783319442732, guid: be11fc812692e0347a54cda02ab0024d,
+        type: 3}
+      SpawnInterval: 0
+  - SpawnDatas:
+    - IsUnitSpawn: 1
+      Prefab: {fileID: 1342305783319442732, guid: be11fc812692e0347a54cda02ab0024d,
+        type: 3}
+      SpawnInterval: 0
 --- !u!1 &545044812
 GameObject:
   m_ObjectHideFlags: 0
