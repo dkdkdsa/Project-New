@@ -96,6 +96,14 @@ public class PlayerInputController : MonoBehaviour, IInputController, InputMap.I
 
     }
 
+
+    public void OnMove(InputAction.CallbackContext context)
+    {
+
+        SetValue(Hashs.INPUT_HASH_MOVE_VECTOR, context.ReadValue<Vector2>());
+
+    }
+
     private void OnDestroy()
     {
 
