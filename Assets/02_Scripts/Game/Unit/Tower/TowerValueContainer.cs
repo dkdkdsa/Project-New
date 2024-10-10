@@ -1,4 +1,6 @@
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 [System.Serializable]
@@ -13,7 +15,7 @@ public class StatPair<T, TValue> where T : StatBase<TValue>
 public class TowerValueContainer : MonoBehaviour, IValueContainer<int>, IStatContainer<int>
 {
 
-    [SerializeField] private List<StatPair<FloatStat, float>> _floatStats = new();
+    [field: SerializeField] public List<StatPair<FloatStat, float>> FloatStats { get; private set; } = new();
 
     private Dictionary<int, FloatStat> _floatStatContainer;
     private Transform _target;
@@ -23,7 +25,7 @@ public class TowerValueContainer : MonoBehaviour, IValueContainer<int>, IStatCon
 
         _floatStatContainer = new();
 
-        foreach (var pair in _floatStats)
+        foreach (var pair in FloatStats)
         {
 
             _floatStatContainer.Add(pair.name.GetHash(), new FloatStat(pair.stat));
@@ -68,5 +70,21 @@ public class TowerValueContainer : MonoBehaviour, IValueContainer<int>, IStatCon
         else if (key == Hashs.TOWER_VALUE_TARGET)
             _target = value as Transform;
 
+    }
+
+    public IReadOnlyList<T> GetStatData<T>()
+    {
+
+        if (typeof(T) == typeof(StatPair<FloatStat, float>))
+            return FloatStats.Select(x => x.Cast<T>()).ToList();
+
+        return null;
+
+        
+    }
+
+    public T GetStat<T>(int key)
+    {
+        return _floatStatContainer[key].Cast<T>();
     }
 }

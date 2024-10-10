@@ -34,7 +34,7 @@ public static class Support
 
     }
 
-    public static int GatGameObjectId(this RaycastHit hit)
+    public static int GetGameObjectId(this RaycastHit hit)
     {
         return hit.transform.gameObject.GetInstanceID();
     }
@@ -58,6 +58,15 @@ public static class Support
 
         return children;
         
+    }
+
+    public static void Clear(this Transform transform)
+    {
+        var childs = transform.GetChilds();
+
+        foreach (var item in childs)
+            UnityEngine.Object.Destroy(item.gameObject);
+
     }
 
 }

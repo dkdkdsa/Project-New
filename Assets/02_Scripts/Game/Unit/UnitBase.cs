@@ -6,7 +6,7 @@ using UnityEngine;
 public abstract class UnitBase : MonoBehaviour
 {
 
-    [SerializeField] protected UnitDataSO _data;
+    [field: SerializeField] public UnitDataSO Data { get; private set; }
     protected GameTag _tag;
 
 

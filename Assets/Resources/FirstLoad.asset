@@ -15,3 +15,4 @@ MonoBehaviour:
   labels:
   - m_LabelString: Tower
   - m_LabelString: Prefab
+  - m_LabelString: UnitData

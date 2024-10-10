@@ -8,5 +8,6 @@ public enum Tags
     Damageable = 1 << 1,
     Ground = 1 << 2,
     Enemy = 1 << 3,
+    Tower = 1 << 4,
 
 }

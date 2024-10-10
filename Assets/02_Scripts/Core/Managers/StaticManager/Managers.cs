@@ -5,13 +5,13 @@ using UnityEngine;
 public static class Managers
 {
 
-    private static Dictionary<Type, IManager> _managerContainer = new();
+    private static Dictionary<Type, IManager> _managerContainer;
 
     [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
     private static void Bind()
     {
 
-        GameObject root = new GameObject("@!STATIC_MANAGERS!@");
+        _managerContainer = new();
 
 #if UNITY_EDITOR
 
@@ -22,9 +22,9 @@ public static class Managers
         Application.quitting += HandleQuit;
 
 #endif
-        var resourceManager = root.AddComponent<AddressableResourceManager>();
-        _managerContainer.Add(typeof(IResourceManager), resourceManager);
+        _managerContainer.Add(typeof(IResourceManager), new AddressableResourceManager());
         _managerContainer.Add(typeof(ISoundManager), new SoundManager());
+        _managerContainer.Add(typeof(IEventManager), new EventManager());
 
         foreach (var manager in _managerContainer.Values)
         {
@@ -36,7 +36,7 @@ public static class Managers
     private static void HandleQuit()
     {
 
-        foreach(var item in _managerContainer.Values)
+        foreach (var item in _managerContainer.Values)
         {
             item.Dispose();
         }
@@ -44,7 +44,7 @@ public static class Managers
     }
 
     public static T GetManager<T>() where T : IManager
-    {
+    { 
 
         if (_managerContainer.TryGetValue(typeof(T), out var value))
         {
