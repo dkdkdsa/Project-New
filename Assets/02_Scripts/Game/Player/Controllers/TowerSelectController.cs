@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class TowerSelectController : MonoBehaviour, ILocalInject, IController
@@ -14,8 +11,6 @@ public class TowerSelectController : MonoBehaviour, ILocalInject, IController
 
     public void Control(params object[] param)
     {
-
-
     }
 
     public void LocalInject(ComponentList list)
@@ -36,10 +31,13 @@ public class TowerSelectController : MonoBehaviour, ILocalInject, IController
 
         var t = param[0].Cast<MouseInputType>();
 
-        if(t == MouseInputType.Down)
+        if (t == MouseInputType.Down)
         {
 
             var tower = SelectTower();
+
+            if(tower != null)
+                _evtMgr.NotifyEvent(GlobalEvent.TowerSelect, tower);
 
         }
 
@@ -52,7 +50,7 @@ public class TowerSelectController : MonoBehaviour, ILocalInject, IController
 
         var hits = Physics.RaycastAll(ray, 1000);
 
-        foreach(var hit in hits)
+        foreach (var hit in hits)
         {
 
             var tag = TagManager.Instance.FindGameTag(hit.GetGameObjectId());

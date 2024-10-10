@@ -16,6 +16,9 @@ public class FloatStat : StatBase<float>
 
             float v = _value;
 
+            if(_modify == null)
+                _modify = new List<float>();
+
             foreach (var item in _modify)
             {
 

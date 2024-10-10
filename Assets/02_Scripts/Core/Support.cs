@@ -60,4 +60,13 @@ public static class Support
         
     }
 
+    public static void Clear(this Transform transform)
+    {
+        var childs = transform.GetChilds();
+
+        foreach (var item in childs)
+            UnityEngine.Object.Destroy(item.gameObject);
+
+    }
+
 }

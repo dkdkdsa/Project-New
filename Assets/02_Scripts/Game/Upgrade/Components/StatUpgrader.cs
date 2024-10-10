@@ -31,9 +31,13 @@ public abstract class StatUpgrader<TKey, TValue> : MonoBehaviour, IUpgradeable, 
     public bool Upgrade()
     {
 
+        if(!(Datas.Count > Level))
+            return false;
+
+        Debug.Log(1);
+
         if (ApplyCost())
         {
-            Level++;
 
             var obj = Datas[Level];
             foreach(var item in obj.datas)
@@ -44,6 +48,7 @@ public abstract class StatUpgrader<TKey, TValue> : MonoBehaviour, IUpgradeable, 
             }
 
             OnUpgraded?.Invoke();
+            Level++;
             return true;
 
         }

@@ -7,7 +7,6 @@ public class TowerUpgrader : StatUpgrader<int, float>
     protected override bool ApplyCost()
     {
 
-        Debug.Log(1);
         return true;
 
     }

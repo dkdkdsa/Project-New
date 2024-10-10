@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 [System.Serializable]
@@ -69,5 +70,21 @@ public class TowerValueContainer : MonoBehaviour, IValueContainer<int>, IStatCon
         else if (key == Hashs.TOWER_VALUE_TARGET)
             _target = value as Transform;
 
+    }
+
+    public IReadOnlyList<T> GetStatData<T>()
+    {
+
+        if (typeof(T) == typeof(StatPair<FloatStat, float>))
+            return FloatStats.Select(x => x.Cast<T>()).ToList();
+
+        return null;
+
+        
+    }
+
+    public T GetStat<T>(int key)
+    {
+        return _floatStatContainer[key].Cast<T>();
     }
 }
