@@ -153,7 +153,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d2797e283b956140aabc9a3000ca996, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <Data>k__BackingField: {fileID: 11400000, guid: 33d8eb755dfd62c4c9afa5676ca9d177,
+  <Data>k__BackingField: {fileID: 11400000, guid: 96fdc226c5186c548a4797fe9f2fb0cb,
     type: 2}
 --- !u!114 &3740232653352972170
 MonoBehaviour:
@@ -219,15 +219,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <FloatStats>k__BackingField:
-  - name: AttackRate
-    stat:
-      _value: 1
-  - name: AttackPower
-    stat:
-      _value: 1
   - name: Range
     stat:
       _value: 3
+  - name: AttackPower
+    stat:
+      _value: 3
+  - name: AttackRate
+    stat:
+      _value: 4
 --- !u!114 &8446251626733039311
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -267,17 +267,25 @@ MonoBehaviour:
   <Datas>k__BackingField:
   - cost: 30
     datas:
-    - statKey: 1091132432
+    - statKey: 1353023627
       modify: 1
     - statKey: 1491154395
       modify: 1
-    - statKey: 1353023627
+    - statKey: 1091132432
       modify: 1
-  - cost: 40
+  - cost: 30
     datas:
-    - statKey: 1091132432
-      modify: 1
-    - statKey: 1491154395
-      modify: 1
     - statKey: 1353023627
-      modify: 1
+      modify: 2
+    - statKey: 1491154395
+      modify: 2
+    - statKey: 1091132432
+      modify: 2
+  - cost: 30
+    datas:
+    - statKey: 1353023627
+      modify: 3
+    - statKey: 1491154395
+      modify: 3
+    - statKey: 1091132432
+      modify: 3

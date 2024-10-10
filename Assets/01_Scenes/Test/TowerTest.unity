@@ -1093,6 +1093,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Test
       objectReference: {fileID: 0}
+    - target: {fileID: 9083028183175100241, guid: 962b11c01a50e0745a29c6e3b7eb8cc8,
+        type: 3}
+      propertyPath: <FloatStats>k__BackingField.Array.data[2].stat._value
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

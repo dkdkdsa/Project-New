@@ -36,6 +36,11 @@ MonoBehaviour:
     m_SerializedLabels:
     - Prefab
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 96fdc226c5186c548a4797fe9f2fb0cb
+    m_Address: Tower_Test_Data
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 7c1b6ab13f2e3f04789f0d493da40577, type: 2}
   m_SchemaSet:
