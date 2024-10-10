@@ -289,3 +289,19 @@ MonoBehaviour:
       modify: 3
     - statKey: 1091132432
       modify: 3
+  - cost: 80
+    datas:
+    - statKey: 1353023627
+      modify: 3
+    - statKey: 1491154395
+      modify: 1
+    - statKey: 1091132432
+      modify: 3
+  - cost: 11
+    datas:
+    - statKey: 1353023627
+      modify: 2
+    - statKey: 1491154395
+      modify: 2
+    - statKey: 1091132432
+      modify: 2

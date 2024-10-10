@@ -1093,11 +1093,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Test
       objectReference: {fileID: 0}
-    - target: {fileID: 9083028183175100241, guid: 962b11c01a50e0745a29c6e3b7eb8cc8,
-        type: 3}
-      propertyPath: <FloatStats>k__BackingField.Array.data[2].stat._value
-      value: 4
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1932,6 +1927,7 @@ GameObject:
   - component: {fileID: 2129109065}
   - component: {fileID: 2129109069}
   - component: {fileID: 2129109071}
+  - component: {fileID: 2129109072}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -2027,6 +2023,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 720621752485ecf4ab0b69bacd1503f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2129109072
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2129109064}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84bfa13b53abfb14cbc4d1471bfd52ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <Money>k__BackingField: 100
 --- !u!1001 &607174160750886443
 PrefabInstance:
   m_ObjectHideFlags: 0
