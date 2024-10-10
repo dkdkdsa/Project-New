@@ -28,4 +28,10 @@ public class WaveSetting : MonoBehaviour, IWaveSettingHandler
     {
         return _waveData[wave].SpawnDatas.Count;
     }
+
+#if UNITY_EDITOR
+
+    public List<WaveData> WaveData => _waveData;
+
+#endif
 }
