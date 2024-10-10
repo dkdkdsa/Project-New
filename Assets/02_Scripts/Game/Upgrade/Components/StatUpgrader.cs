@@ -34,8 +34,6 @@ public abstract class StatUpgrader<TKey, TValue> : MonoBehaviour, IUpgradeable, 
         if(!(Datas.Count > Level))
             return false;
 
-        Debug.Log(1);
-
         if (ApplyCost())
         {
 
