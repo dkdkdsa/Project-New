@@ -34,7 +34,7 @@ public class UnitSelectController : MonoBehaviour, ILocalInject, IController
         if (t == MouseInputType.Down)
         {
 
-            var tower = SelectTower();
+            var tower = SelectUnit();
 
             if(tower != null)
                 _evtMgr.NotifyEvent(GlobalEvent.UnitSelect, tower);
@@ -43,7 +43,7 @@ public class UnitSelectController : MonoBehaviour, ILocalInject, IController
 
     }
 
-    private UnitBase SelectTower()
+    private UnitBase SelectUnit()
     {
 
         var ray = _cam.ScreenPointToRay(_input.GetValue<Vector2>(Hashs.INPUT_HASH_MOUSE_POSITION));
@@ -55,12 +55,13 @@ public class UnitSelectController : MonoBehaviour, ILocalInject, IController
 
             var tag = TagManager.Instance.FindGameTag(hit.GetGameObjectId());
 
-            if (tag.HasTag(Tags.Tower))
+            if (tag.HasTag(Tags.Unit))
             {
 
                 return tag.GetComponent<UnitBase>();
 
             }
+
         }
 
         return null;
