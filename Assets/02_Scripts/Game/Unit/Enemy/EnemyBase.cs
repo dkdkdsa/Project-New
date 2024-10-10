@@ -4,7 +4,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 
 [RequireComponent(typeof(LocalInstaller))]
-public abstract class EnemyBase : UnitBase, ILocalInject, IRouteBaseSpawnable
+public abstract class EnemyBase : TowerBase, ILocalInject, IRouteBaseSpawnable
 {
     protected List<IController> _controllers = new();
     protected Dictionary<string, IController> _controlDatas = new();

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class TowerSelectController : MonoBehaviour, ILocalInject, IController
+public class UnitSelectController : MonoBehaviour, ILocalInject, IController
 {
 
     private IInputController _input;
@@ -37,13 +37,13 @@ public class TowerSelectController : MonoBehaviour, ILocalInject, IController
             var tower = SelectTower();
 
             if(tower != null)
-                _evtMgr.NotifyEvent(GlobalEvent.TowerSelect, tower);
+                _evtMgr.NotifyEvent(GlobalEvent.UnitSelect, tower);
 
         }
 
     }
 
-    private TowerBase SelectTower()
+    private UnitBase SelectTower()
     {
 
         var ray = _cam.ScreenPointToRay(_input.GetValue<Vector2>(Hashs.INPUT_HASH_MOUSE_POSITION));
@@ -58,7 +58,7 @@ public class TowerSelectController : MonoBehaviour, ILocalInject, IController
             if (tag.HasTag(Tags.Tower))
             {
 
-                return tag.GetComponent<TowerBase>();
+                return tag.GetComponent<UnitBase>();
 
             }
         }

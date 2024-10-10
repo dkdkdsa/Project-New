@@ -73,7 +73,7 @@ public class TowerStatusUIController : UIController<TowerStatueModel, TowerStatu
 
         _evtMgr = Managers.GetManager<IEventManager>();
 
-        _evtMgr.RegisterEvent(GlobalEvent.TowerSelect, HandleTowerSelected);
+        _evtMgr.RegisterEvent(GlobalEvent.UnitSelect, HandleTowerSelected);
 
         _view.RegisterEvent(ActionType.Upgrade, HandleUpgrade);
         _view.RegisterEvent(ActionType.Sell, HandleSell);
