@@ -1,6 +1,7 @@
 public enum GlobalEvent
 {
-    TowerSelect
+    TowerSelect,
+    EnemySelect
 }
 public interface IEventManager : IManager, IEventContainer<GlobalEvent>
 {
