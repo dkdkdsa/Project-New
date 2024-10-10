@@ -35,7 +35,6 @@ public class TowerUpgradeEditor : Editor
         }
 
         _start = EditorGUILayout.GetControlRect();
-
         TowerNameLabel();
         Line(Color.black);
         EditorGUILayout.Space();

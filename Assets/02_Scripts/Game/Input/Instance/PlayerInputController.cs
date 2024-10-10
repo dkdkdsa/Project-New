@@ -4,6 +4,7 @@ using UnityEngine.InputSystem;
 
 public enum MouseInputType
 {
+    None = 0,
     Down,
     Up
 }
@@ -90,9 +91,27 @@ public class PlayerInputController : MonoBehaviour, IInputController, InputMap.I
     {
 
         if (context.performed)
+        {
+
             NotifyEvent(Hashs.INPUT_HASH_R_MOUSE_BUTTON, MouseInputType.Down);
+            SetValue(Hashs.INPUT_HASH_R_MOUSE_BUTTON, MouseInputType.Down);
+
+        }
         else
+        {
+
             NotifyEvent(Hashs.INPUT_HASH_R_MOUSE_BUTTON, MouseInputType.Up);
+            SetValue(Hashs.INPUT_HASH_R_MOUSE_BUTTON, MouseInputType.Up);
+
+        }
+
+    }
+
+
+    public void OnMove(InputAction.CallbackContext context)
+    {
+
+        SetValue(Hashs.INPUT_HASH_MOVE_VECTOR, context.ReadValue<Vector2>());
 
     }
 

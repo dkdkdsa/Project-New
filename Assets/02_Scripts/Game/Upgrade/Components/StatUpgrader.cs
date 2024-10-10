@@ -20,7 +20,7 @@ public abstract class StatUpgrader<TKey, TValue> : MonoBehaviour, IUpgradeable, 
 
     }
 
-    protected abstract bool ApplyCost();
+    protected abstract bool ApplyCost(int cost);
     public int GetCost()
     {
 
@@ -34,7 +34,7 @@ public abstract class StatUpgrader<TKey, TValue> : MonoBehaviour, IUpgradeable, 
         if(!(Datas.Count > Level))
             return false;
 
-        if (ApplyCost())
+        if (ApplyCost(Datas[Level].cost))
         {
 
             var obj = Datas[Level];
