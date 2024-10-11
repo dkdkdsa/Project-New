@@ -158,7 +158,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02031e083b0e813478b8b654ad243ca8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _tags: 8
+  _tags: 24
 --- !u!114 &1342305783319442732
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -171,7 +171,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83a2554cd4b07fb409138b2b1278670d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _data: {fileID: 0}
+  <Data>k__BackingField: {fileID: 0}
 --- !u!1 &1623451774634319300
 GameObject:
   m_ObjectHideFlags: 0

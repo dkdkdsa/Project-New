@@ -12,5 +12,6 @@ public interface IRouteHandler
 
 public interface IRouteable : IRouteHandler
 {
+    public Vector3[] Routes { get; }
     public Vector3 ReturnRoute();
 }
