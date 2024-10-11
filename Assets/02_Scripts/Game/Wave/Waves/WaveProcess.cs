@@ -48,7 +48,7 @@ public partial class WaveSystem : MonoBehaviour
 
         yield return CheckChangeWaveCoroutine();
 
-        _currentWave++;
+        _waveSetting.CurrentWave++;
     }
 
     /// <summary>

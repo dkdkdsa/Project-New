@@ -14,6 +14,8 @@ public class WaveSetting : MonoBehaviour, IWaveSettingHandler
 
     public int Wave => WaveData.Count;
 
+    public int CurrentWave { get; set; }
+
     public SpawnData GetSpawnData(int wave, int index)
     {
         return WaveData[wave].SpawnDatas[index];

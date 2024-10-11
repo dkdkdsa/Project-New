@@ -8,11 +8,10 @@ using UnityEngine.AI;
 public class NavMeshRouteFinder : MonoBehaviour, IRouteable
 {
     private NavMeshAgent _agent;
+    private Vector3[] _routes;
     private bool _isRepeat;
 
     private int _routeIndex = 0;
-
-    public Vector3[] Routes { get; private set; }
 
     private void Awake()
     {
@@ -26,7 +25,7 @@ public class NavMeshRouteFinder : MonoBehaviour, IRouteable
     /// <param name="isRepeat">반복 여부</param>
     public void GetRoute(Vector3[] routes, bool isRepeat = false)
     {
-        Routes = routes;
+        _routes = routes;
         _isRepeat = isRepeat;
     }
 
@@ -36,14 +35,14 @@ public class NavMeshRouteFinder : MonoBehaviour, IRouteable
     /// <returns></returns>
     public Vector3 ReturnRoute()
     {
-        if (!_isRepeat && _routeIndex >= Routes.Length - 1)
+        if (!_isRepeat && _routeIndex >= _routes.Length - 1)
         {
-            return Routes[_routeIndex];
+            return _routes[_routeIndex];
         }
 
         if (!_agent.pathPending && _agent.remainingDistance <= _agent.stoppingDistance) // 경로 계산이 완료되었는지 확인
         {
-            if (_routeIndex >= Routes.Length - 1)
+            if (_routeIndex >= _routes.Length - 1)
             {
                 _routeIndex = 0;
             }
@@ -53,6 +52,6 @@ public class NavMeshRouteFinder : MonoBehaviour, IRouteable
             }
         }
 
-        return Routes[_routeIndex];
+        return _routes[_routeIndex];
     }
 }

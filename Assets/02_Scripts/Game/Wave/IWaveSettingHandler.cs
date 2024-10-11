@@ -11,9 +11,14 @@ public interface IWaveSettingHandler
     public float WaveIntervalTime { get; }
 
     /// <summary>
-    /// 현재 웨이브(0부터 시작)
+    /// 모든 웨이브
     /// </summary>
     public int Wave { get; }
+
+    /// <summary>
+    /// 현재 웨이브(0부터 시작)
+    /// </summary>
+    public int CurrentWave { get; set; }
 
 
 

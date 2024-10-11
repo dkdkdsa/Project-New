@@ -8,7 +8,7 @@ public partial class WaveSystem : MonoBehaviour, ILocalInject, IWaveTrigger
     private Spawner<IRouteBaseSpawnable> _spawner;
     private IWaveSettingHandler _waveSetting;
 
-    private int _currentWave    = 0;
+    private int _currentWave   => _waveSetting.CurrentWave;
     public bool _canChangeWave = false;
 
     public void LocalInject(ComponentList list)

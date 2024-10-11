@@ -9,7 +9,6 @@ public class Enemy : EnemyBase, ILocalInject
 
     public override void Init()
     {
-        transform.position = _routeBaseMovement.Routes[0];
     }
 
     public void LocalInject(ComponentList list)
@@ -21,6 +20,8 @@ public class Enemy : EnemyBase, ILocalInject
     public override void RouteMovement(Vector3[] routes, bool repeatMovement = false)
     {
         _routeBaseMovement.GetRoute(routes, repeatMovement);
+
+        transform.position = routes[0];
     }
 
     protected virtual void Update()
