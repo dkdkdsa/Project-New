@@ -1,4 +1,5 @@
 using UnityEngine;
+using SharedData;
 
 [CreateAssetMenu(menuName = "SO/Unit/Data")]
 public class UnitDataSO : ScriptableObject

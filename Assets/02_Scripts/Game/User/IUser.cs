@@ -4,7 +4,8 @@ public interface IUser
 {
 
     public DeckData Deck { get; }
-    public List<string> Towers { get; }
-    public IMoney Coin { get; }
+    public IReadOnlyList<string> Towers { get; }
+    public ulong Coin { get; }
+    public ulong Jam { get; }
 
 }

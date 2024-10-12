@@ -53,8 +53,7 @@ public class TowerCreateUIController :
         if (Input.GetKeyDown(KeyCode.K))
         {
 
-            _model = new DeckData();
-            _model.unitDataAddress.Add("Tower_Test_Data");
+            _model = new DeckData { unitDataAddress = new List<string>{ "Tower_Test_Data" } };
             _view.Viewing(_model);
         }
 

@@ -4,6 +4,6 @@ using System.Collections.Generic;
 public class DeckData
 {
 
-    public List<string> unitDataAddress = new();
+    public IReadOnlyList<string> unitDataAddress;
 
 }
