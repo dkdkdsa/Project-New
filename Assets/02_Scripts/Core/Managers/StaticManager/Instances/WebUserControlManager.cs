@@ -14,12 +14,10 @@ public class WebUserControlManager : IUserControlManager
 
     }
 
-    public async Task<IUser> CreateUser(Action<IUser> createdCallback)
+    public Task<IUser> CreateUser(Action<IUser> createdCallback)
     {
-        throw new NotImplementedException();
+        
     }
-
-
 
 
     public Task<bool> UpdateUser()
