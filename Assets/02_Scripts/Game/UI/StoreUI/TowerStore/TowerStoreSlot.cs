@@ -1,3 +1,4 @@
+using SharedData;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -19,13 +20,12 @@ public class TowerStoreSlot : MonoBehaviour, IPointerDownHandler
 
     }
 
-    public void SetUp(IEventContainer<ActionType> evt, StoreData data)
+    public void SetUp(IEventContainer<ActionType> evt, UnitDataSO so, ShopData data)
     {
 
-        var so = data.obj as UnitDataSO;
 
         _icon.sprite = so.View;
-        _nameText.text = data.price.ToString();
+        _nameText.text = data.Price.ToString();
 
         _event = evt;
 

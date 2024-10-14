@@ -4,10 +4,12 @@ using System.Threading.Tasks;
 public interface IUserControlManager : IManager
 {
 
+    public IUser User { get; }
+
     /// <summary>
     /// 유저를 생성함
     /// </summary>
-    public Task<IUser> CreateUser(Action<IUser> createdCallback);
+    public Task<bool> CreateUser();
 
 
     /// <summary>

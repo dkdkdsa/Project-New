@@ -1,3 +1,5 @@
+using Newtonsoft.Json;
+using SharedData;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.Services.Authentication;
@@ -9,11 +11,17 @@ public class DebugAuth : MonoBehaviour
 
     private async void Start()
     {
+
+
         await UnityServices.InitializeAsync();
         await AuthenticationService.Instance.SignInAnonymouslyAsync();
-        var info = await AuthenticationService.Instance.GetPlayerInfoAsync();
 
-        Debug.Log(AuthenticationService.Instance.PlayerId);
+        var userMgr = Managers.GetManager<IUserControlManager>();
+        await userMgr.CreateUser();
+        await userMgr.UpdateUser();
+
+        Debug.Log(userMgr.User.Towers.Count);
+
     }
 
 }

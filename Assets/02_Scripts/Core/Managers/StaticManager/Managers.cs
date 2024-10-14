@@ -23,6 +23,8 @@ public static class Managers
 
 #endif
         _managerContainer.Add(typeof(IResourceManager), new AddressableResourceManager());
+        _managerContainer.Add(typeof(IUserControlManager), new WebUserControlManager());
+        _managerContainer.Add(typeof(IShopManager), new WebShopManager());
         _managerContainer.Add(typeof(ISoundManager), new SoundManager());
         _managerContainer.Add(typeof(IEventManager), new EventManager());
 

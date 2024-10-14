@@ -1,15 +1,16 @@
+using SharedData;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using static TowerStoreUIController;
 
-public class TowerStoreUIController : UIController<StoreDataSO, TowerStoreUIView, ActionType>
+public class TowerStoreUIController : UIController<ShopInfo, TowerStoreUIView, ActionType>
 {
 
-    [SerializeField] private StoreDataSO _data;
 
-    private Dictionary<TowerStoreSlot, StoreData> _slotBinding = new();
+    private Dictionary<TowerStoreSlot, ShopData> _slotBinding = new();
+    private IShopManager _shopMgr;
 
     public enum ActionType
     {
@@ -20,9 +21,9 @@ public class TowerStoreUIController : UIController<StoreDataSO, TowerStoreUIView
     private void Awake()
     {
 
-        _model = _data;
         _view.RegisterEvent(ActionType.Click, HandleClick);
         _view.RegisterEvent(ActionType.Created, HandleCreated);
+        _shopMgr = Managers.GetManager<IShopManager>(); 
 
     }
 
@@ -30,13 +31,13 @@ public class TowerStoreUIController : UIController<StoreDataSO, TowerStoreUIView
     {
 
         var slot = param[0].Cast<TowerStoreSlot>();
-        var data = param[1].Cast<StoreData>();
+        var data = param[1].Cast<ShopData>();
 
         _slotBinding.Add(slot, data);
 
     }
 
-    private void HandleClick(object[] param)
+    private async void HandleClick(object[] param)
     {
 
         var slot = param[0].Cast<TowerStoreSlot>();
@@ -44,16 +45,42 @@ public class TowerStoreUIController : UIController<StoreDataSO, TowerStoreUIView
         if(_slotBinding.TryGetValue(slot, out var data))
         {
 
-            Debug.Log((data.obj as UnitDataSO).Name + "을 구매하다");
+            if(await _shopMgr.Buy(data))
+            {
+
+                Debug.Log("구매 성공");
+
+            }
+            else
+            {
+                Debug.Log("구매 실패");
+            }
 
         }
 
     }
 
+    private void Update()
+    {
+
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            StartViewing();
+        }
+
+    }
+
+    private async void StartViewing()
+    {
+
+        _model = await _shopMgr.GetShopInfo();
+        _view.Viewing(_model);
+    }
+
     private void Start()
     {
 
-        _view.Viewing(_model);
+
 
     }
 

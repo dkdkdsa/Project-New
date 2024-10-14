@@ -1,4 +1,5 @@
 using SharedData;
+using System;
 using System.Collections.Generic;
 
 public class WebUser : IUser
@@ -24,6 +25,11 @@ public class WebUser : IUser
 
     public ulong Jam => _info.Jam;
 
+    public WebUser()
+    {
+        _info = new();
+        _deck = new DeckData();
+    }
     public WebUser(UserInfo info)
     {
         _info = info;
