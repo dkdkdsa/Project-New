@@ -11,9 +11,24 @@ public interface IWaveSettingHandler
     public float WaveIntervalTime { get; }
 
     /// <summary>
-    /// 현재 웨이브(0부터 시작)
+    /// 모든 웨이브
     /// </summary>
     public int Wave { get; }
+
+    /// <summary>
+    /// 현재 웨이브(0부터 시작)
+    /// </summary>
+    public int CurrentWave { get; set; }
+
+    /// <summary>
+    /// 마지막 유닛 생성으로부터 스킵이 가능한 시간
+    /// </summary>
+    public float SkippableTime { get; }
+
+    /// <summary>
+    /// 마지막 유닛 생성으로부터 스
+    /// </summary>
+    public float ForcedSkipTIme { get; }
 
 
 
