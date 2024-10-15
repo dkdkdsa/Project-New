@@ -20,6 +20,16 @@ public interface IWaveSettingHandler
     /// </summary>
     public int CurrentWave { get; set; }
 
+    /// <summary>
+    /// 마지막 유닛 생성으로부터 스킵이 가능한 시간
+    /// </summary>
+    public float SkippableTime { get; }
+
+    /// <summary>
+    /// 마지막 유닛 생성으로부터 스
+    /// </summary>
+    public float ForcedSkipTIme { get; }
+
 
 
 

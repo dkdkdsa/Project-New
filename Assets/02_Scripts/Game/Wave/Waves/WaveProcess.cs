@@ -12,10 +12,14 @@ public partial class WaveSystem : MonoBehaviour
     {
         while (_currentWave < _waveSetting.Wave)
         {
-            WaveHub.OnStartWave?.Invoke(_waveSetting.WaveIntervalTime);
+            //WaveHub.OnStartWave?.Invoke(_waveSetting.WaveIntervalTime);
+            WaveHub.OnStartWave?.Invoke();
 
             yield return new WaitForSeconds(_waveSetting.WaveIntervalTime);
             yield return WaveEventCoroutine(_waveSetting.SpawnUnitCountInWave(_currentWave));
+            yield return CheckChangeWaveCoroutine();
+
+            WaveHub.OnEndWave?.Invoke();
         }
     }
 
@@ -46,8 +50,6 @@ public partial class WaveSystem : MonoBehaviour
             spawnIndex++;
         }
 
-        yield return CheckChangeWaveCoroutine();
-
         _waveSetting.CurrentWave++;
     }
 
@@ -57,9 +59,16 @@ public partial class WaveSystem : MonoBehaviour
     /// <returns></returns>
     private IEnumerator CheckChangeWaveCoroutine()
     {
-        while (!_canChangeWave)
+        float elapsedTime = 0f;
+
+        yield return new WaitForSeconds(_waveSetting.SkippableTime);
+
+        WaveHub.OnSkipEvent?.Invoke();
+
+        while (!_canChangeWave && elapsedTime < _waveSetting.ForcedSkipTIme)
         {
             yield return null;
+            elapsedTime += Time.deltaTime;
         }
 
         _canChangeWave = false;

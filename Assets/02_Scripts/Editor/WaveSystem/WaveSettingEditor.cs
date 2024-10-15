@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Unity.Services.CloudSave;
 using Unity.VisualScripting;
 using UnityEditor;
 using UnityEditorInternal;
@@ -68,8 +69,17 @@ public class WaveSettingEditor : Editor
 
         EditorGUILayout.Space();
 
-        _target.WaveStartTime = EditorGUILayout.FloatField("웨이브 간의 시간 간격:", _target.WaveStartTime);
-        _target.DefaultSpawnInterval = EditorGUILayout.FloatField("유닛의 기본 생성 시간:", _target.DefaultSpawnInterval);
+        _target.WaveStartTime = EditorGUILayout.FloatField("웨이브 간의 시간 간격 :", _target.WaveStartTime);
+        _target.DefaultSpawnInterval = EditorGUILayout.FloatField("유닛의 기본 생성 시간 :", _target.DefaultSpawnInterval);
+
+        EditorGUILayout.Space();
+        EditorGUILayout.Space();
+
+        EditorGUILayout.LabelField("마지막 유닛 생성으로부터 스킵이 가능한 시간 :");
+        _target.Skippabletime = EditorGUILayout.FloatField(_target.Skippabletime);
+
+        EditorGUILayout.LabelField("마지막 유닛 생성으로부터 강제로 스킵이 되는 시간 :");
+        _target.TimeToSkip = EditorGUILayout.FloatField(_target.TimeToSkip);
 
         EditorGUILayout.Space();
         EditorGUILayout.Space();
@@ -108,6 +118,8 @@ public class WaveSettingEditor : Editor
                     _index--;
                 }
 
+                // Update the serialized object after removing an element
+                serializedObject.Update();
                 EditorUtility.SetDirty(_target);  // 객체가 변경되었음을 알림
                 WaveUpdate();  // Update wave names
 
@@ -116,6 +128,12 @@ public class WaveSettingEditor : Editor
                 {
                     InitializeReorderableList();
                 }
+                else
+                {
+                    _list = null;  // 모든 데이터를 제거한 경우 _list를 null로 설정
+                }
+
+                serializedObject.ApplyModifiedProperties();  // Apply changes to the serialized object
                 Repaint();  // 인스펙터 다시 그리기
             }
         }
@@ -131,12 +149,14 @@ public class WaveSettingEditor : Editor
 
         if (_index >= 0 && _index < _target.WaveData.Count)
         {
-            if (_list == null || _list.count != _target.WaveData[_index].SpawnDatas.Count)
+            var waveData = _target.WaveData[_index];            
+
+            if (_list == null || _list.count != waveData.SpawnDatas.Count)
             {
                 InitializeReorderableList();
             }
 
-            _list.DoLayoutList(); // ReorderableList 표시
+            _list.DoLayoutList();
         }
 
         serializedObject.ApplyModifiedProperties();

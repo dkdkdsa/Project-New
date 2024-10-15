@@ -4,14 +4,17 @@ using TMPro;
 using UnityEngine;
 using static WaveUIController;
 
-public class WaveUIView : UIView<WaveSetting, WaveUIEvent>
+public class WaveUIView : UIView<WaveModel, ActionType>
 {
-    [SerializeField] private TextMeshProUGUI _waveText;
-    [SerializeField] private TextMeshProUGUI _timeText;
+    [SerializeField] private WaveUIPanel _wavePanel;
+    [SerializeField] private WaveSkipUIPanel _skipPanel;
 
-    public override void Viewing(in WaveSetting model)
+    public WaveUIPanel WavePanel => _wavePanel;
+    public WaveSkipUIPanel SkipPanel => _skipPanel;
+
+    public override void Viewing(in WaveModel model)
     {
-        _waveText.text = $"{model.CurrentWave}";
-        _timeText.text = $"{model.CurrentWave}";
+        _wavePanel.SetUp(model.Setting);
+        _skipPanel.SetUp(this);
     }
 }

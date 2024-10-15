@@ -14,9 +14,4 @@ public static class Hashs
     public static readonly int TOWER_VALUE_ATTACKPOWER = "AttackPower".GetHash();
     public static readonly int TOWER_VALUE_RANGE = "Range".GetHash();
     #endregion
-
-    #region Enemy
-    public static readonly int ENEMY_VALUE_SPEED = "Speed".GetHash();
-    public static readonly int ENEMY_VALUE_HP = "Hp".GetHash();
-    #endregion
 }
