@@ -35,8 +35,6 @@ public class WebShopManager : IShopManager
         var response = await _reqester.PostAsync();
         _reqester.header.Clear();
 
-        Debug.Log(response.statusCode);
-
         if (!response.isSuccess)
             return false;
 

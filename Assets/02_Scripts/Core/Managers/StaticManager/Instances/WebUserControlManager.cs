@@ -1,4 +1,6 @@
 using SharedData;
+using System.Net.Http;
+using System.Text;
 using System.Threading.Tasks;
 using Unity.Services.Authentication;
 using UnityEngine;
@@ -52,6 +54,23 @@ public class WebUserControlManager : IUserControlManager
 
         return response.isSuccess;
 
+
+    }
+
+    public async Task<bool> SetDeck(DeckInfo info)
+    {
+
+        _reqester.url = $"{Urls.BASE_URL}/User/SetDeck";
+        _reqester.header.Add("AccessToken", AuthenticationService.Instance.AccessToken);
+        _reqester.content = new StringContent(
+            JsonUtility.ToJson(info),
+            Encoding.UTF8, 
+            "application/json");
+
+        var response = await _reqester.PostAsync();
+        _reqester.header.Clear();
+
+        return response.isSuccess;
 
     }
 
