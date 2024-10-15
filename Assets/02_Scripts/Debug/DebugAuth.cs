@@ -20,7 +20,7 @@ public class DebugAuth : MonoBehaviour
         await userMgr.CreateUser();
         await userMgr.UpdateUser();
 
-        Debug.Log(userMgr.User.Towers.Count);
+        Debug.Log(userMgr.User.Deck.unitDataAddress.Count);
 
     }
 

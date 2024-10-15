@@ -4,7 +4,7 @@ using System.Collections.Generic;
 public class DeckUIModel
 {
 
-    public DeckInfo Info { get; set; }
-    public List<string> Towers { get; set; }
+    public DeckInfo Info { get; set; } = new();
+    public List<string> Towers { get; set; } = new();
 
 }

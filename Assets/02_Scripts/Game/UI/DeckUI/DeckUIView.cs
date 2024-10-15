@@ -31,14 +31,17 @@ public class DeckUIView : UIView<DeckUIModel, ActionType>
     public void ViewInfo(UnitDataSO so, bool isEq)
     {
 
-
+        _infoUIRoot.gameObject.SetActive(true);
+        _infoImage.sprite = so.View;
+        _infoText.text = isEq ? "해제하기" : "장착하기";
 
     }
 
     public void InfoBtnClick()
     {
 
-
+        _infoUIRoot.gameObject.SetActive(false);
+        NotifyEvent(ActionType.InfoClick);
 
     }
 

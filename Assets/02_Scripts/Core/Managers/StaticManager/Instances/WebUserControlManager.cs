@@ -60,15 +60,20 @@ public class WebUserControlManager : IUserControlManager
     public async Task<bool> SetDeck(DeckInfo info)
     {
 
+        Debug.Log(JsonUtility.ToJson(info));
+
         _reqester.url = $"{Urls.BASE_URL}/User/SetDeck";
         _reqester.header.Add("AccessToken", AuthenticationService.Instance.AccessToken);
         _reqester.content = new StringContent(
             JsonUtility.ToJson(info),
-            Encoding.UTF8, 
+            Encoding.UTF8,
             "application/json");
 
+
         var response = await _reqester.PostAsync();
+        Debug.Log(response.statusCode);
         _reqester.header.Clear();
+        _reqester.content = null;
 
         return response.isSuccess;
 

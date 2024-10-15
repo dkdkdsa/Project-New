@@ -202,7 +202,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _towersRoot: {fileID: 1292314124}
   _deckRoot: {fileID: 979608580}
-  _prefab: {fileID: 0}
+  _prefab: {fileID: 733307517752247725, guid: c7ca0007b63dce244b413c48730d68b0, type: 3}
+  _infoUIRoot: {fileID: 1941398956}
+  _infoImage: {fileID: 722253446}
+  _infoText: {fileID: 728935445}
 --- !u!114 &239527908
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -518,7 +521,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 577801372}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 239527907}
+        m_TargetAssemblyTypeName: DeckUIView, Assembly-CSharp
+        m_MethodName: InfoBtnClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &577801372
 MonoBehaviour:
   m_ObjectHideFlags: 0
