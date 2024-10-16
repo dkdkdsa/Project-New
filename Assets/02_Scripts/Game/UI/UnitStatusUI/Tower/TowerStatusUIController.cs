@@ -96,6 +96,9 @@ public class TowerStatusUIController : UIController<TowerStatueModel, TowerStatu
     private void HandleTowerSelected(object[] param)
     {
 
+        if (param[0] is not TowerBase)
+            return;
+
         var tower = param[0].Cast<TowerBase>();
         _currentTower = tower;
         _currentUpgrade = tower.GetComponent<IUpgradeable>();
